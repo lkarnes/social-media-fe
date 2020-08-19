@@ -1,0 +1,21 @@
+.sign-in{
+    .header{
+        border-bottom:1px solid grey;
+    }
+    .input-box{
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        
+        p{
+            padding: 5px 0 5px 0;
+            font-size: 15px;
+        }
+        .input{
+            text-decoration: none;
+            width: 200px;
+            border: 1px solid grey;
+            border-radius: 3px;
+        }
+    }
+}

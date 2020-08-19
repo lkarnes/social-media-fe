@@ -1,0 +1,18 @@
+.home {
+    margin: 0 auto;
+    width: 70%;
+    min-height: 100vh;
+    border-left: 2px solid $foreground;
+    border-right: 2px solid $foreground;
+    .call-to-action{
+        padding-top: 10vh;
+        display: flex;
+        justify-content: space-evenly;
+        .box{
+            width: 50%;
+            display:flex;
+            justify-content: center;
+
+        }
+    }
+}

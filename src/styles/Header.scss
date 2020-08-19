@@ -1,0 +1,35 @@
+.Header {
+    background: $primary;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    align-items: center;
+    .Navigation {
+        display: flex;
+        align-items: center;
+        .NavIcon {
+            width: 30px;
+            height: 25px;
+            color: white;
+        }
+        .NavDropDown {
+            display: none;
+            position: absolute;
+            width: 200px;
+            margin-top: 130px;
+            padding: 10px 0;
+            background: $foreground;
+            color: $secondary;
+            font-weight: 600;
+            p {
+                padding: 3px 0;
+                width: 100%;
+                &:hover{
+                    background: $secondary;
+                    color: $foreground;
+                }
+            }    
+        }
+    }
+}
