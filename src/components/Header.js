@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import menu from '../images/menu.png'
-
+import {Link} from 'react-router-dom';
 
 export default function Header(props) {
     const [bool, setBool] = useState(false)
@@ -22,11 +22,10 @@ export default function Header(props) {
             <div className='Navigation'>
                 <img className='NavIcon' src={menu} onClick={toggleDrop} />
                 <div id='dropdown1' className='NavDropDown'>
-                    <p>Home</p>
-                    <p>Profile</p>
-                    <p>Logout</p>
+                    <Link>Home</Link>
+                    <Link>Profile</Link>
+                    <Link>Logout</Link>
                 </div>
-                
             </div>
         </div>
     )

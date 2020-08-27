@@ -1,6 +1,7 @@
 .sign-in{
     .header{
         border-bottom:1px solid grey;
+        padding-bottom: 5px;
     }
     .input-box{
         display: flex;
@@ -8,8 +9,8 @@
         justify-content: flex-start;
         
         p{
-            padding: 5px 0 5px 0;
-            font-size: 15px;
+            padding: 3px 0 5px 0;
+            font-size: 12px;
         }
         .input{
             text-decoration: none;
