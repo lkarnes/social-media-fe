@@ -3,7 +3,7 @@ import axios from 'axios'
 import Icon from '../../images/user-icon.png'
 
 export default function SignIn(props){
-    const [data, setData] = useState({})
+    const [data] = useState({})
     const handleChange = e => {
         data[e.target.name] = e.target.value
         console.log(data)
@@ -11,7 +11,6 @@ export default function SignIn(props){
     const handleConfirm = e => {
         handleChange(e)
         var item = document.getElementById('light')
-        console.log(data)
         if (e.target.value === data.password){
             item.style.background = '#63f765'
         }else{
@@ -25,13 +24,13 @@ export default function SignIn(props){
         console.log(data)
         axios.post('https://social-1.herokuapp.com/api/register', data).then(res =>{
             console.log(res)
-            let token = res.data.token
+            localStorage.setItem('token', res.data.token)
         }
         )
     }
     return (
         <div className='sign-up'>
-            <h2 className='header'>Sign Up</h2>
+            <h5 className='header'>Sign Up</h5>
             <form onSubmit={handleSubmit}>
                 <div className='image-input'>
                     <p>profile picture</p>
@@ -47,8 +46,11 @@ export default function SignIn(props){
                     <input className='input' type='password' name='password' value={data.password} onChange={handleChange}/>
                 </div>
                 <div className='input-box'>
-                    <p>confirm password</p>
-                    <span id='light' className='confirm'> </span><input className='input' type='password' name='confirm-password' value={data.confirmPassword} onChange={handleConfirm}/>
+                    <div className='confirm-password'>
+                        <p>confirm password</p>
+                        <span id='light' className='confirm'></span>
+                    </div>
+                    <input className='input' type='password' name='confirm-password' value={data.confirmPassword} onChange={handleConfirm}/>
                 </div>
                 <div className='input-box'>
                     <p>first name</p>

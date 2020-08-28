@@ -1,9 +1,16 @@
-import React from 'react'
-import SignUp from './subComponents/signUp'
-import SignIn from './subComponents/signIn'
+import React, {useEffect} from 'react'
+import SignUp from './subComponents/SignUp'
+import SignIn from './subComponents/SignIn'
+import stockPhoto from '../images/women-on-computer.jpg'
 export default function Home(props){
+    useEffect(() =>{
+        if(localStorage.getItem('token')){
+            props.history.push('/feed')
+        }
+    },[])
     return (
         <div className='home'>
+            <img className='marketing-photo' src={stockPhoto} alt='women on computer Captured by Brooke Cagle'/>
             <div className='call-to-action'>
                 <div className='box'>
                     <SignUp/>
@@ -11,8 +18,6 @@ export default function Home(props){
                 <div className='box'>
                     <SignIn/>
                 </div>
-                
-                
             </div>
             
         </div>

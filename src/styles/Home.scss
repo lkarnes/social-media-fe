@@ -4,8 +4,18 @@
     min-height: 100vh;
     border-left: 2px solid $foreground;
     border-right: 2px solid $foreground;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    padding: 200px 0 0 0;
+    .marketing-photo{
+        width: 43%;
+        border-radius: 10px;
+        border: 8px solid $primary;
+    }
     .call-to-action{
-        padding-top: 10vh;
+        width: 50%;
+        justify-content: space-evenly;
         display: flex;
         justify-content: space-evenly;
         .box{

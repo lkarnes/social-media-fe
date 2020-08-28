@@ -3,13 +3,14 @@ import axios from 'axios'
 
 export default function SignIn(props){
 
-    const [data, setData] = useState({})
+    const [data] = useState({})
 
     const handleChange = e => {
         data[e.target.name] = e.target.value
     }
     const handleSubmit = e => {
         e.preventDefault()
+        console.log(data)
         axios.post('https://social-1.herokuapp.com/api/login', data).then(res => {
             console.log(res)
             localStorage.setItem('token', res.data.token)
@@ -19,13 +20,13 @@ export default function SignIn(props){
         <div className='sign-in'>
             <h5 className='header'>Sign In</h5>
             <form onSubmit={handleSubmit}>
-                <div className='input-box' name='username' value={data.username} onChange={handleChange}>
+                <div className='input-box'>
                     <p>username</p>
-                    <input/>
+                    <input name='username' value={data.username} onChange={handleChange}/>
                 </div>
-                <div  className='input-box' name='password' value={data.password} onChange={handleChange}>
+                <div  className='input-box' >
                     <p>password</p>
-                    <input/>
+                    <input name='password' value={data.password} onChange={handleChange}/>
                 </div>
                 <button>Submit</button>
                 
