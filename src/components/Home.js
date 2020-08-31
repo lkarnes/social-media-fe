@@ -13,10 +13,10 @@ export default function Home(props){
             <img className='marketing-photo' src={stockPhoto} alt='women on computer Captured by Brooke Cagle'/>
             <div className='call-to-action'>
                 <div className='box'>
-                    <SignUp/>
+                    <SignUp props={props}/>
                 </div>
                 <div className='box'>
-                    <SignIn/>
+                    <SignIn  props={props}/>
                 </div>
             </div>
             

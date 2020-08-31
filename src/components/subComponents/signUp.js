@@ -19,12 +19,10 @@ export default function SignIn(props){
     }
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(data)
         delete data['confirm-password']
-        console.log(data)
         axios.post('https://social-1.herokuapp.com/api/register', data).then(res =>{
-            console.log(res)
             localStorage.setItem('token', res.data.token)
+            props.history.push('/feed')
         }
         )
     }

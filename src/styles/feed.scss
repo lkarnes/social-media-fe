@@ -1,0 +1,41 @@
+.feed {
+    width: 100%;
+    display: flex;
+    .left-panel{
+        border: 1px solid black;
+        width: 15%;
+    }
+    .main-feed {
+        border: 1px solid black;
+        width: 70%;
+        height: 100vh;
+        .post-box{
+            margin: 0 auto;
+            width: 50%;
+            border: 1px solid $primary;
+            display: flex;
+            flex-wrap: wrap;
+            h4{
+                padding-left: 25px;
+                width: 100%;
+            }
+            form{
+                padding-left: 30px;
+                display: flex;
+                flex-direction: column;
+            }
+            #title{
+                font-size: 30px;
+            }
+            #textarea{
+                font-size: 20px;
+                width: 500px;
+                resize: none;
+            }
+        }
+    }
+    .right-panel{
+        border: 1px solid black;
+        width: 15%;
+    }
+}

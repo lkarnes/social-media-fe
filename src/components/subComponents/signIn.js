@@ -12,8 +12,9 @@ export default function SignIn(props){
         e.preventDefault()
         console.log(data)
         axios.post('https://social-1.herokuapp.com/api/login', data).then(res => {
-            console.log(res)
             localStorage.setItem('token', res.data.token)
+            props.history.push('/feed')
+            console.log(props)
         })
     }
     return (
@@ -24,7 +25,7 @@ export default function SignIn(props){
                     <p>username</p>
                     <input name='username' value={data.username} onChange={handleChange}/>
                 </div>
-                <div  className='input-box' >
+                <div  className='input-box' >yet
                     <p>password</p>
                     <input name='password' value={data.password} onChange={handleChange}/>
                 </div>
