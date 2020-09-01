@@ -6,6 +6,7 @@
         width: 15%;
     }
     .main-feed {
+        padding-top: 25px;
         border: 1px solid black;
         width: 70%;
         height: 100vh;
@@ -13,6 +14,7 @@
             margin: 0 auto;
             width: 50%;
             border: 1px solid $primary;
+            padding: 5px 0 15px 0;
             display: flex;
             flex-wrap: wrap;
             h4{
