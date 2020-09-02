@@ -1,43 +1,70 @@
 .feed {
+    
     width: 100%;
     display: flex;
     .left-panel{
-        border: 1px solid black;
         width: 15%;
     }
     .main-feed {
+        background: $foreground;
         padding-top: 25px;
-        border: 1px solid black;
         width: 70%;
         height: 100vh;
         .post-box{
+            
             margin: 0 auto;
-            width: 50%;
-            border: 1px solid $primary;
+            width: 75%;
+            border-bottom: 1px solid $primary;
             padding: 5px 0 15px 0;
             display: flex;
             flex-wrap: wrap;
             h4{
+                color: $background;
                 padding-left: 25px;
-                width: 100%;
+                width: 50%;
             }
             form{
+                width: 50%;
                 padding-left: 30px;
                 display: flex;
                 flex-direction: column;
             }
+            input, textarea{
+                background: $background;
+                color: $foreground;
+            }
             #title{
-                font-size: 30px;
+                font-size: 25px;
             }
             #textarea{
                 font-size: 20px;
-                width: 500px;
                 resize: none;
+            }
+            button {
+                color: $background;
+                border: 2px solid $background;
+                border-radius: 10px;
+                background: $secondary;
+            }
+            .upload-button{
+                width: 100px;
+                margin: 0 auto;
+            }
+            .submit-button{
+                width: 120px;
+                height: 30px;
+            }
+
+            .photo-upload{
+                border: 1px solid $primary;
+                margin: 0 auto;
+                max-width: 300px;
+                max-height: 250px;
+                object-fit: cover;
             }
         }
     }
     .right-panel{
-        border: 1px solid black;
         width: 15%;
     }
 }

@@ -32,7 +32,7 @@ export default function SignIn(props){
             <form onSubmit={handleSubmit}>
                 <div className='image-input'>
                     <p>profile picture</p>
-                    <img src={Icon} width='30px'/>  
+                    <img src={Icon} width='30px' alt='profile'/>  
                     <input type='file' onChange={handleChange}/>
                 </div>
                 <div className='input-box'>
