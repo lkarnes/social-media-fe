@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
 import menu from '../images/menu.png'
 import {Link} from 'react-router-dom';
+import SignedInHeader from './subComponents/SignedInHeader'
+import {connect} from 'react-redux';
 
-export default function Header(props) {
+function Header(props) {
     const [bool, setBool] = useState(false)
     let toggleDrop = () => {
         let item = document.getElementById('dropdown1')
@@ -14,7 +16,7 @@ export default function Header(props) {
             item.style.display = 'none'
         }
     }
-    return (
+    return props.userData.id === null ? (
         <div className='Header'>
             <div className=''>
                 <h1>Social-1</h1>
@@ -28,5 +30,13 @@ export default function Header(props) {
                 </div>
             </div>
         </div>
+    ) : (
+        <SignedInHeader history={props.history} />
     )
 }
+
+const mapStateToProps= state =>({
+    userData: state.userData,
+})
+
+export default connect(mapStateToProps)(Header)

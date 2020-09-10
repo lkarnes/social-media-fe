@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import axios from 'axios'
+import {connect} from 'react-redux'
+import {signIn} from '../../redux/actions'
 
-export default function SignIn(props){
 
+function SignIn(props){
     const [data] = useState({})
 
     const handleChange = e => {
@@ -10,11 +12,10 @@ export default function SignIn(props){
     }
     const handleSubmit = e => {
         e.preventDefault()
-        console.log(data)
         axios.post('https://social-1.herokuapp.com/api/login', data).then(res => {
             localStorage.setItem('token', res.data.token)
-            props.history.push('/feed')
-            console.log(props)
+            props.signIn(res.data.data)
+            props.props.history.push('/feed')
         })
     }
     return (
@@ -35,3 +36,9 @@ export default function SignIn(props){
         </div>
     )
 }
+const mapStateToProps = state => ({
+    userData: state.userData,
+    feedArray: state.feedArray
+})
+
+export default connect(mapStateToProps, {signIn})(SignIn)

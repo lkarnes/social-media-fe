@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axiosWithAuth from '../../functions/axiosWithAuth'
+import {connect} from 'react-redux';
 
 function MakePost(props){
     
@@ -43,7 +44,9 @@ function MakePost(props){
     }
     const handleSubmit = e => {
         e.preventDefault()
-        axiosWithAuth.post('/')
+        axiosWithAuth().post('/posts/createpost/', data).then(res=>{
+            console.log(res)
+        })
     }
     
     return (
@@ -62,4 +65,8 @@ function MakePost(props){
     )
 }
 
-export default MakePost
+const mapStateToProps = state => ({
+    id: state.id
+})
+
+export default connect(mapStateToProps)(MakePost);
