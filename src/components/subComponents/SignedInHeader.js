@@ -22,7 +22,7 @@ function SignedInHeader(props) {
             <h1>Social-1</h1>
         </div>
         <div className='Navigation'>
-            <img className='NavIcon' src={menu} onClick={toggleDrop} />
+            <img className='NavIcon' src={menu} onClick={toggleDrop} alt=''/>
             <div id='dropdown1' className='NavDropDown'>
     <p>{props.userData.first_name} {props.userData.last_name}</p>
                 <Link to='/'>Home</Link>

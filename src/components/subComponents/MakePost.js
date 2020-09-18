@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import axiosWithAuth from '../../functions/axiosWithAuth'
 import {connect} from 'react-redux';
+import {addPost} from '../../redux/actions'
 
 function MakePost(props){
     
-    const [data] = useState({})
+    const [data, setData] = useState({})
         
     const adjustHeight = () => {
         const textarea = document.getElementById('textarea')
@@ -23,13 +24,15 @@ function MakePost(props){
                 err.style.display = 'none'
             }else{
                 err.style.display = 'block'
-                e.target.value = data.body
             }
+        }else{
+            data[e.target.name] = e.target.value
         }
     }
 
     const handleSelect = e => {
         e.preventDefault()
+        setData({})
         var hiddenInput = document.getElementById('file-input')
         hiddenInput.click()
     }
@@ -44,9 +47,17 @@ function MakePost(props){
     }
     const handleSubmit = e => {
         e.preventDefault()
+        data.poster_id = props.id
+        if(!data.image){
+            data.type = 'string'
+        }else{
+            data.type = 'image'
+        }
+        data.status = 'public'
         axiosWithAuth().post('/posts/createpost/', data).then(res=>{
             console.log(res)
-        })
+            props.addPost(res.data)
+        }).catch(err => {console.log(err)})
     }
     
     return (
@@ -66,7 +77,7 @@ function MakePost(props){
 }
 
 const mapStateToProps = state => ({
-    id: state.id
+    id: state.userData.id
 })
 
-export default connect(mapStateToProps)(MakePost);
+export default connect(mapStateToProps,{addPost})(MakePost);

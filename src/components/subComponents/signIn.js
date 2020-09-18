@@ -14,7 +14,7 @@ function SignIn(props){
         e.preventDefault()
         axios.post('https://social-1.herokuapp.com/api/login', data).then(res => {
             localStorage.setItem('token', res.data.token)
-            props.signIn(res.data.data)
+            props.signIn(res.data.userData)
             props.props.history.push('/feed')
         })
     }

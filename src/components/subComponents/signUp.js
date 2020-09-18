@@ -1,9 +1,12 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import Icon from '../../images/user-icon.png'
+import {connect} from 'react-redux'
+import {signIn} from '../../redux/actions'
 
-export default function SignIn(props){
+function SignUp(props){
     const [data] = useState({})
+    var usernameError = React.createRef()
     const handleChange = e => {
         data[e.target.name] = e.target.value
         console.log(data)
@@ -22,9 +25,12 @@ export default function SignIn(props){
         delete data['confirm-password']
         axios.post('https://social-1.herokuapp.com/api/register', data).then(res =>{
             localStorage.setItem('token', res.data.token)
-            props.history.push('/feed')
+            props.signIn(res.data.userData)
+            props.props.history.push('/feed')
         }
-        )
+        ).catch(err => {
+            console.log(err.response.data.detail)
+        })
     }
     return (
         <div className='sign-up'>
@@ -36,6 +42,7 @@ export default function SignIn(props){
                     <input type='file' onChange={handleChange}/>
                 </div>
                 <div className='input-box'>
+                    <p ref={usernameError} style={{display: 'none'}}>username already taken</p>
                     <p>username</p>
                     <input className='input' type='text' name='username' value={data.username} onChange={handleChange}/>
                 </div>
@@ -67,3 +74,11 @@ export default function SignIn(props){
         </div>
     )
 }
+
+const mapStateToProps = state => ({
+    userData: state.userData,
+    feedArray: state.feedArray
+})
+
+
+export default connect(mapStateToProps, {signIn})(SignUp)
