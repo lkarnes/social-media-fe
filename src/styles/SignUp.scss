@@ -10,6 +10,12 @@
         align-items: center;
         justify-content: space-between;
     }
+    #profile-picture{
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 50%
+    }
     #light{
         margin: 2px 0 0 20px;
         border-radius: 50%;

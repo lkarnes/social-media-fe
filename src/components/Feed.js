@@ -7,16 +7,17 @@ import {fillFeed} from '../redux/actions'
 import Post from './subComponents/Post'
 
 function Feed(props) {
-    console.log(props.feedArray)
     useEffect(()=>{
         if(!localStorage.getItem('token')){
           props.history.push('/')
         }
-        axiosWithAuth().get(`/posts/${props.id}`).then(res => {
-          console.log(res)
-          props.fillFeed(res.data)
+        if(props.id){
+          axiosWithAuth().get(`/posts/${props.id}`).then(res => {
+          props.fillFeed(res.data.reverse())
         })
-      }, [props])
+        }
+        
+      }, [props.id])
     return (
         <div className='feed'>
           <div className='left-panel'>
