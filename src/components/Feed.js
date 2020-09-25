@@ -17,7 +17,7 @@ function Feed(props) {
         })
         }
         
-      }, [props.id])
+      }, [props])
     return (
         <div className='feed'>
           <div className='left-panel'>

@@ -1,33 +1,40 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
-import menu from '../../images/menu.png'
-
+import menu from '../../images/menu.png';
+import SearchBar from '../SearchBar';
+import { push } from 'react-router-redux'
+import { Redirect } from 'react-router-dom'
 
 function SignedInHeader(props) {
-    const [bool, setBool] = useState(false)
-    let toggleDrop = () => {
+    const [bool, setBool] = useState(true)
+    const handleLogout = () => {
+        console.log(props)
+        localStorage.removeItem('token')
+    } 
+    const toggleDrop = () => {
         let item = document.getElementById('dropdown1')
         if(bool){
             setBool(!bool)
-            item.style.display = 'block'
+            item.style.display = 'flex'
         }else{
             setBool(!bool)
             item.style.display = 'none'
         }
     }
     return (
-    <div className='Header'>
-        <div className=''>
+    <div className='header'>
+        <div className='heading'>
             <h1>Social-1</h1>
         </div>
+        <SearchBar/>
         <div className='Navigation'>
             <img className='NavIcon' src={menu} onClick={toggleDrop} alt=''/>
             <div id='dropdown1' className='NavDropDown'>
     <p>{props.userData.first_name} {props.userData.last_name}</p>
-                <Link to='/'>Home</Link>
-                <Link to='/profile'>Profile</Link>
-                <button>Logout</button>
+                <Link className='link' to='/'>Home</Link>
+                <Link className='link' to='/profile'>Profile</Link>
+                <Link onClick={handleLogout} to='/'>Logout</Link>
             </div>
         </div>
     </div>

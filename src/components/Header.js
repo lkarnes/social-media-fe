@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {signIn} from '../redux/actions';
 
 function Header(props) {
+    console.log(props)
     useEffect(()=>{
         if(localStorage.getItem('token') && props.userData.id === null){
             var token = localStorage.getItem('token')
@@ -21,13 +22,10 @@ function Header(props) {
     },[props])
 
     return props.userData.id === null ? (
-        <div className='Header'>
-            <div className=''>
-                <h1>Social-1</h1>
-            </div>
+        <div>
         </div>
     ) : (
-        <SignedInHeader history={props.history} />
+        <SignedInHeader />
     )
 }
 

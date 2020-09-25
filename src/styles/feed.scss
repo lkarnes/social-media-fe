@@ -66,6 +66,11 @@
                 padding-left: 30px;
                 display: flex;
                 flex-direction: column;
+
+            }
+            input {
+                width: 60%;
+                margin-bottom: 5px;
             }
             input, textarea{
                 background: $background;

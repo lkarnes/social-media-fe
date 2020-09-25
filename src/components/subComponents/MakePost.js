@@ -1,12 +1,11 @@
 import React, {useState} from 'react';
 import axiosWithAuth from '../../functions/axiosWithAuth';
-import axios from 'axios';
 import {connect} from 'react-redux';
 import {addPost} from '../../redux/actions';
 
 function MakePost(props){
     const formElement = React.useRef()
-    const [data, setData] = useState({})
+    const [data] = useState({})
    
         
     const adjustHeight = () => {
