@@ -7,7 +7,7 @@ export default function Home(props){
         if(localStorage.getItem('token')){
             props.history.push('/feed')
         }
-    },[])
+    },[props])
     return (
         <div className='home'>
             <img className='marketing-photo' src={stockPhoto} alt='women on computer Captured by Brooke Cagle'/>

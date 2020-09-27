@@ -1,7 +1,20 @@
 export const signIn = payload => {
-    console.log(payload)
     return {
         type: "SIGN_IN",
+        payload: payload
+    }
+}
+
+export const addPost = payload => {
+    return {
+        type: "ADD_POST",
+        payload: payload
+    }
+}
+
+export const fillFeed = payload => {
+    return {
+        type: "FILL_FEED",
         payload: payload
     }
 }

@@ -10,6 +10,14 @@
         padding-top: 25px;
         width: 70%;
         height: 100vh;
+        .user-tag{
+            color: $foreground;
+            background: $primary;
+            border-bottom: 1px solid $secondary;
+            border-radius: 25px 25px 0 0;
+            padding: 3px 0 3px 15px;
+        }
+        
         .post-box{
             
             margin: 0 auto;
@@ -28,6 +36,11 @@
                 padding-left: 30px;
                 display: flex;
                 flex-direction: column;
+
+            }
+            input {
+                width: 60%;
+                margin-bottom: 5px;
             }
             input, textarea{
                 background: $background;

@@ -15,10 +15,20 @@ export const initialState = {
 export const reducer = (state=initialState, action) => {
 switch(action.type) {
     case"SIGN_IN":
-    console.log(action.payload, 'in case')
         return {
             ...state,
             userData: action.payload
+        }
+    case "ADD_POST":
+        console.log('add post is working')
+        return {
+            ...state,
+            feedArray: [action.payload , ...state.feedArray]
+        }
+    case "FILL_FEED":
+        return {
+            ...state,
+            feedArray: [...action.payload]
         }
     default:
         return state

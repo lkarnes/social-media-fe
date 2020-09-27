@@ -14,7 +14,7 @@ function SignIn(props){
         e.preventDefault()
         axios.post('https://social-1.herokuapp.com/api/login', data).then(res => {
             localStorage.setItem('token', res.data.token)
-            props.signIn(res.data.data)
+            props.signIn(res.data.userData)
             props.props.history.push('/feed')
         })
     }
@@ -28,7 +28,7 @@ function SignIn(props){
                 </div>
                 <div  className='input-box' >yet
                     <p>password</p>
-                    <input name='password' value={data.password} onChange={handleChange}/>
+                    <input type='password' name='password' value={data.password} onChange={handleChange}/>
                 </div>
                 <button>Submit</button>
                 
