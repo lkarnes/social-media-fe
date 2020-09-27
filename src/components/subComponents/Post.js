@@ -15,14 +15,16 @@ function Post(props) {
         <div className='single-post'>
             <div className='user-tag'>
                 <h4>{posterData.username}</h4>
-                {posterData.image?<img src={posterData.image} alt='profile picture'/>: ''}
+                {posterData.image?<img src={posterData.image} alt='profile picture'/>: <></>}
                 <p>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
             </div>
+            <div className='post-data'>
+                {props.data.type === 'image' ? <img className='post-image' src={props.data.image} alt=''/> :'' }
+                <h5 className='title'>{props.data.header}</h5>
+                <p className='body'>{props.data.body}</p>
+            </div>
+            </div>
             
-            {props.data.type === 'image' ? <img className='post-image' src={props.data.image} alt=''/> :'' }
-            <h5 className='title'>{props.data.header}</h5>
-            <p className='body'>{props.data.body}</p>
-        </div>
     )
 }
 

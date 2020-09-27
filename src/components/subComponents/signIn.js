@@ -28,7 +28,7 @@ function SignIn(props){
                 </div>
                 <div  className='input-box' >yet
                     <p>password</p>
-                    <input name='password' value={data.password} onChange={handleChange}/>
+                    <input type='password' name='password' value={data.password} onChange={handleChange}/>
                 </div>
                 <button>Submit</button>
                 

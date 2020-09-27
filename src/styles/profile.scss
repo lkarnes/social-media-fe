@@ -1,0 +1,25 @@
+.profile {
+    .profile-header {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        color: white;
+        background: linear-gradient(to bottom right, $foreground, $primary);
+        min-height: 300px;
+        margin-top: 10px;
+        .profile-picture {
+            width: 240px;
+        }
+        h2{
+            margin-left: 10px;
+            height: 60px;
+        }
+        h5{
+            margin-left: 10px; 
+        }
+    }
+
+    .post-box {
+
+    }
+}
