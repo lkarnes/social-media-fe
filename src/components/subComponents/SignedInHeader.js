@@ -32,8 +32,8 @@ function SignedInHeader(props) {
             <div id='dropdown1' className='NavDropDown'>
     <p>{props.userData.first_name} {props.userData.last_name}</p>
                 <Link className='link' to='/'>Home</Link>
-                <Link className='link' to='/profile'>Profile</Link>
-                <Link onClick={handleLogout} to='/'>Logout</Link>
+                <Link className='link' to='/myprofile' >Profile</Link>
+                <Link className='link' onClick={handleLogout} to='/'>Logout</Link>
             </div>
         </div>
     </div>
