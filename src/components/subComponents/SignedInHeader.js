@@ -3,8 +3,7 @@ import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
 import menu from '../../images/menu.png';
 import SearchBar from '../SearchBar';
-import { push } from 'react-router-redux'
-import { Redirect } from 'react-router-dom'
+import Logo3 from '../../images/logo-3.png'
 
 function SignedInHeader(props) {
     const [bool, setBool] = useState(true)
@@ -25,7 +24,7 @@ function SignedInHeader(props) {
     return (
     <div className='header'>
         <div className='heading'>
-            <h1>Social-1</h1>
+            <img className='logo' src={Logo3}/>
         </div>
         <SearchBar/>
         <div className='Navigation'>

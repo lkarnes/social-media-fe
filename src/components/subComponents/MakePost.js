@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import axiosWithAuth from '../../functions/axiosWithAuth';
 import {connect} from 'react-redux';
 import {addPost} from '../../redux/actions';
+import ImagePreview from './ImagePreview';
 
 function MakePost(props){
     const formElement = React.useRef()
@@ -23,10 +24,11 @@ function MakePost(props){
         hiddenInput.click()
     }
     const handleUpload = e => {
-        const photoBox = document.getElementById('added-photo')
+        const photoBox = document.getElementById('photo-box')
+        const image = document.getElementById('added-photo')
         if(e.target.value){   
-            photoBox.src = URL.createObjectURL(e.target.files[0])
-            photoBox.style.display = 'block'
+            image.src = URL.createObjectURL(e.target.files[0])
+            photoBox.style.display = 'flex'
         }
     }
     const handleSubmit = e => {
@@ -34,7 +36,8 @@ function MakePost(props){
         const formData = new FormData(formElement.current)
         formData.append('poster_id', props.id)
         formData.append('status', 'public')
-        if(!formData.get('image')){
+        console.log(formData.get('image'))
+        if(formData.get('image').name === ''){
             formData.append('type', 'string')
         }else{
             formData.append('type', 'image')
@@ -45,7 +48,7 @@ function MakePost(props){
     }
     
     return (
-        <div className='post-box'>
+        <div className='make-post'>
                 <h4>Create a Post</h4>
             <form onSubmit={handleSubmit} ref={formElement} >
                 <p className='error' id='max-length' style={{'display':'none'}}>The body is at max length</p>
@@ -55,7 +58,7 @@ function MakePost(props){
                 <button className='upload-button' onClick={handleSelect}>Add a Image</button>
                 <button className='submit-button' type='submit' onClick={handleSubmit}>Post</button>
             </form>
-            <img id='added-photo' className='photo-upload' style={{display:'none'}} src='#' alt='post'/>
+            <ImagePreview/>
         </div>
     )
 }
