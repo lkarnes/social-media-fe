@@ -13,6 +13,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+h1,h2,h3,h4,h5 {
+  color: $primary-color;
+}
 
 h1 {
   font-size: 50px;
@@ -34,5 +37,14 @@ h5 {
 
 p, a {
   font-size: 20px;
+  color: $primary-color;
 }
-textarea, input { outline: none;border: none; }
+textarea, input { 
+  outline: none;
+  border: none;
+  color: $primary-color;
+}
+.delete-button {
+  width: 15px;
+  height: 17px;
+}

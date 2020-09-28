@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux'
-import axiosWithAuth from '../../functions/axiosWithAuth'
+import axiosWithAuth from '../../functions/axiosWithAuth';
+import userIcon from '../../images/user-icon.png'
 
 function Post(props) {
     const [posterData, setPosterData] = useState({})
@@ -14,14 +15,14 @@ function Post(props) {
     return (
         <div className='single-post'>
             <div className='user-tag'>
-                <h4>{posterData.username}</h4>
-                {posterData.image?<img src={posterData.image} alt='profile picture'/>: <></>}
-                <p>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
+                {posterData.image?<img className='profile-photo-small' src={posterData.image} alt='profile picture'/>: <img className='user-icon-small' src={userIcon} />}
+                <p className='username'>{posterData.username}</p>
+                <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
             </div>
             <div className='post-data'>
-                {props.data.type === 'image' ? <img className='post-image' src={props.data.image} alt=''/> :'' }
-                <h5 className='title'>{props.data.header}</h5>
+                <p className='title'>{props.data.header}</p>
                 <p className='body'>{props.data.body}</p>
+                 {props.data.type === 'image' ? <img className='post-image' src={props.data.image} alt=''/> :'' }
             </div>
             </div>
             

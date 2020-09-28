@@ -1,0 +1,49 @@
+.make-post{
+    margin: 0 auto;
+    width: 60%;
+    padding: 5px 0 15px 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    box-shadow: 1px 1px 5px rgb(168, 168, 168);
+    h4{
+        padding-left: 25px;
+        width: 50%;
+    }
+    form{
+        width: 50%;
+        padding-left: 30px;
+        display: flex;
+        flex-direction: column;
+
+    }
+    input {
+        width: 60%;
+        margin-bottom: 5px;
+    }
+    input, textarea{
+        background: $background;
+        
+    }
+    #title{
+        font-size: 20px;
+    }
+    #textarea{
+        font-size: 15px;
+        resize: none;
+    }
+    button {
+        color: $background;
+        border: 2px solid $background;
+        border-radius: 10px;
+        background: $secondary;
+    }
+    .upload-button{
+        width: 100px;
+        margin: 0 auto;
+    }
+    .submit-button{
+        width: 120px;
+        height: 30px;
+    }
+}

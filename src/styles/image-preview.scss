@@ -1,0 +1,15 @@
+.image-preview{
+    display: flex;
+    .photo-upload{
+        border: 1px solid $primary;
+        margin: 0 auto;
+        max-width: 300px;
+        max-height: 250px;
+        object-fit: scale-down;
+    }
+    .delete-button{
+        padding: 5px;
+        width: 20px;
+        height: 20px;
+    }
+}
