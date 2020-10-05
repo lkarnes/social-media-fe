@@ -31,8 +31,8 @@ function SignedInHeader(props) {
             <img className='NavIcon' src={menu} onClick={toggleDrop} alt=''/>
             <div id='dropdown1' className='NavDropDown'>
     <p>{props.userData.first_name} {props.userData.last_name}</p>
-                <Link className='link' to='/'>Home</Link>
-                <Link className='link' to='/myprofile' >Profile</Link>
+                <Link className='link' to='/' onClick={toggleDrop}>Home</Link>
+                <Link className='link' to='/myprofile' onClick={toggleDrop} >Profile</Link>
                 <Link className='link' onClick={handleLogout} to='/'>Logout</Link>
             </div>
         </div>

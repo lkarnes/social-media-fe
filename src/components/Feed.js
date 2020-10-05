@@ -12,12 +12,14 @@ function Feed(props) {
           props.history.push('/')
         }
         if(props.id){
-          axiosWithAuth().get(`/posts/${props.id}`).then(res => {
-          props.fillFeed(res.data.reverse())
+          axiosWithAuth().get(`/posts/recent/${props.id}/3`).then(res => {
+            props.fillFeed(res.data.reverse())
+            console.log(res)
+        }).catch(err => {
+          console.log(err)
         })
         }
-        
-      }, [props])
+      }, [props.id])
     return (
         <div className='feed'>
           <div className='left-panel'>
@@ -26,7 +28,7 @@ function Feed(props) {
 
           <div className='main-feed'>
             <MakePost />
-            {props.feedArray.map(post => (
+            {props.feedArray.length === 0 ? <div>No Post Found...</div> :props.feedArray.map(post => (
               <Post key={post.id} data={post} />
             ))}
           </div>

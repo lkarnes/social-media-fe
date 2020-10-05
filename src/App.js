@@ -8,7 +8,7 @@ import Profile from './components/Profile'
 import MyProfile from './components/MyProfile'
 function App() {
   return (
-    <div>
+    <div id='App'>
       <Header/>
       <Route exact path='/' component={Home}/>
       <Route path='/feed' component={Feed}/>

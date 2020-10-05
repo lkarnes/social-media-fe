@@ -20,13 +20,13 @@ function SignIn(props){
     }
     return (
         <div className='sign-in'>
-            <h5 className='header'>Sign In</h5>
+            <h5 className=''>Sign In</h5>
             <form onSubmit={handleSubmit}>
                 <div className='input-box'>
                     <p>username</p>
                     <input name='username' value={data.username} onChange={handleChange}/>
                 </div>
-                <div  className='input-box' >yet
+                <div  className='input-box' >
                     <p>password</p>
                     <input type='password' name='password' value={data.password} onChange={handleChange}/>
                 </div>
