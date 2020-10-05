@@ -3,39 +3,75 @@ import {connect} from 'react-redux';
 import axiosWithAuth from '../functions/axiosWithAuth';
 import Post from './subComponents/Post';
 import UserIcon from '../images/user-icon.png';
-
+import MyProfileHeader from './subComponents/MyProfileHeader'
+import FriendList from './subComponents/FriendList'
 function Profile(props) {
-    const [data,setData] = useState({})
     const [posts, setPosts] = useState([])
+    const [modal, setModal] = useState(false)
+    var toggleFriendsList = () => {
+        const modalElem = document.getElementById('friend-list-modal')
+        const profile = document.getElementById('profile')
+        if(!modal){
+            setModal(true)
+            profile.classList.add('blur')
+            modalElem.style.display = 'block'
+        }else{
+            setModal(false)
+            profile.classList.remove('blur')
+            modalElem.style.display = 'none'
+        }
+        
+    }
     useEffect(()=>{
-        console.log(props.userFata)
-        axiosWithAuth().get(`/posts/${props.userData.id}`).then(res => {
+        if (props.userData.id){
+            axiosWithAuth().get(`/posts/${props.userData.id}`).then(res => {
             setPosts(res.data.reverse())
         })
-    }, [props])
-    console.log(posts)
-    return (
-        <div className='profile'>
+        }
+        
+    }, [props.userData])
+    if (props.userData.id){
+       return (
+            <>
+                  <div id='profile'>
+                    <MyProfileHeader {...props} toggle={toggleFriendsList}/>
+                    <div className='post-box'>
+                        {posts.map(post => (
+                        <Post key={post.id} data={post}/>
+                        ))}
+                    </div>
+                </div>
+                <div id='friend-list-modal' className='friendlist modal-medium none'>
+                    <button onClick={toggleFriendsList}>X</button>
+                    <FriendList/>
+                </div>
+            </>
+            
+
+    ) 
+    }else{
+        return(
+            <div className='profile'>
             <div className='profile-header'>
-                <img className='profile-picture' src={props.userData.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
+                <img className='user-icon-large' src={UserIcon} alt={`profile`} />
                 <div className='user-data'>
-                    <h5>{props.userData.first_name} {props.userData.last_name} aka {props.userData.username}</h5>
-                    <p>email: {props.userData.email}</p>
+                    <h5></h5>
+                    <p></p>
                 </div> 
             </div>
             
             <div className='post-box'>
-                {posts.map(post => (
-                <Post key={post.id} data={post}/>
-                ))}
+                
             </div>
-            
         </div>
-    )
+        )
+    }
+    
 }
 
 const mapStateToProps = state => ({
-    userData: state.userData                                    
+    userData: state.userData,
+    friendList: state.friendList                                   
 })
 
 export default connect(mapStateToProps)(Profile)

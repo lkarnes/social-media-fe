@@ -15,13 +15,18 @@ function Profile(props) {
             })
         })
     }, [props])
-    console.log(posts)
+    const handleAddFriend = () => {
+        axiosWithAuth().post('/friends/add', {friend_id: data.id, user_id: props.userData.id, status:'high'}).then(res =>{
+            console.log(res)
+        })
+    }
     return (
         <div className='profile'>
             <div className='profile-header'>
-                <img className='profile-picture' src={data.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
+                <img className='user-icon-large' src={data.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
                 <h2>{data.first_name} {data.last_name} aka {data.username}</h2>
                 <h5>email: {data.email}</h5>
+                <button className='button-1' onClick={handleAddFriend}>Add as Friend</button>
             </div>
             
             <div className='post-box'>

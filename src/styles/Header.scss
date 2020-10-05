@@ -38,13 +38,15 @@
         }
         .dropdown {
             position: absolute;
-            width: 300px;
-            margin-top: 30px;
+            width: 370px;
+            margin-top: 55px;
+            display: flex;
+            flex-direction: column;
             background: $background;
             .user-tab {
                 height: 20px;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-start;
                 color: $primary;
                 border: 1px solid grey;
             }

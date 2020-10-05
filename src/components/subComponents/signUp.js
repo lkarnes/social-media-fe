@@ -48,12 +48,12 @@ function SignUp(props){
     }
     return (
         <div className='sign-up'>
-            <h5 className='header'>Sign Up</h5>
+            <h5 className=''>Sign Up</h5>
             <form ref={formElement} onSubmit={handleSubmit}>
                 <div className='image-input'>
                     <p>profile picture</p>
-                    <img id='profile-picture' name='image' src={Icon} width='60px' alt='profile'/>  
-                    <input id='file-input' type='file' style={{display: 'none'}} onChange={handleUpload}/>
+                    <img id='profile-picture'  src={Icon} width='60px' alt='profile'/>  
+                    <input id='file-input' type='file' name='image' style={{display: 'none'}} onChange={handleUpload}/>
                     <button className='upload-button' onClick={handleSelect}>Add a Image</button>
                 </div>
                 <div className='input-box'>

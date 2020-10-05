@@ -9,13 +9,12 @@ function Post(props) {
     useEffect(()=> {
         axiosWithAuth().get(`/friends/${props.data.poster_id}`).then(res => {
             setPosterData(res.data)
-            console.log(res.data)
         })
     }, [])
     return (
         <div className='single-post'>
             <div className='user-tag'>
-                {posterData.image?<img className='profile-photo-small' src={posterData.image} alt='profile picture'/>: <img className='user-icon-small' src={userIcon} />}
+                {posterData.image?<img className='user-icon-small' src={posterData.image} alt='profile picture'/>: <img className='user-icon-small' src={userIcon} />}
                 <p className='username'>{posterData.username}</p>
                 <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
             </div>

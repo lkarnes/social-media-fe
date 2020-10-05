@@ -8,6 +8,7 @@ export const initialState = {
         profile_picture: null
     },
     feedArray: [],
+    friendList: []
 
 }
 
@@ -29,6 +30,16 @@ switch(action.type) {
         return {
             ...state,
             feedArray: [...action.payload]
+        }
+    case "GET_FRIENDS":
+        return {
+            ...state,
+            friendList: action.payload
+        }
+    case "ADD_FRIEND":
+        return {
+            ...state,
+            friendList: [action.payload , ...state.friendList]
         }
     default:
         return state
