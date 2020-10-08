@@ -80,6 +80,7 @@ textarea, input {
   }
 }
 .modal-large {
+  z-index: 2;
   position: fixed;
   background: $foreground;
   top: 50%;

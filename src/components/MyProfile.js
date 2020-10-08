@@ -24,7 +24,7 @@ function Profile(props) {
     }
     useEffect(()=>{
         if (props.userData.id){
-            axiosWithAuth().get(`/posts/${props.userData.id}`).then(res => {
+            axiosWithAuth().get(`/posts/${props.userData.id}/0`).then(res => {
             setPosts(res.data.reverse())
         })
         }

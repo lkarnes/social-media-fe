@@ -10,14 +10,16 @@ function Profile(props) {
     useEffect(()=>{
         axiosWithAuth().get(`/friends/${props.match.params.id}`).then(res => {
             setData(res.data)
-            axiosWithAuth().get(`/posts/${props.match.params.id}`).then(res => {
+            axiosWithAuth().get(`/posts/${props.match.params.id}/0`).then(res => {
                 setPosts(res.data.reverse())
             })
         })
     }, [props])
     const handleAddFriend = () => {
-        axiosWithAuth().post('/friends/add', {friend_id: data.id, user_id: props.userData.id, status:'high'}).then(res =>{
+        axiosWithAuth().post('/friends/add', {friend_id: data.id, user_id: props.userData.id, friendship_status:'high'}).then(res =>{
             console.log(res)
+        }).catch(err => {
+            console.log({err})
         })
     }
     return (
@@ -33,6 +35,7 @@ function Profile(props) {
                 {posts.map(post => (
                 <Post key={post.id} data={post}/>
                 ))}
+                {posts.length >= 15 ? <button>Load More</button>: <></>}
             </div>
             
         </div>
