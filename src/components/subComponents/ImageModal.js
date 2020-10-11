@@ -1,10 +1,11 @@
 import React from 'react'
-import connect from 'react-redux'
 
 export default function ImageModal(props){
+    console.log(props)
     return (
-        <div style={{display: 'none'}} id={'image-modal-' + props.id} className='modal-medium'>
+        <div className='modal-large'>
         <button onClick={()=>props.toggle(props.id)} >X</button>
+        <img className='modal-image' src={props.image} alt=''/>
         </div>
     )
 }

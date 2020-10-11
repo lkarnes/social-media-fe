@@ -14,6 +14,7 @@ function App() {
       <Route path='/feed' component={Feed}/>
       <Route exact path='/profile/:id' component={Profile}/>
       <Route exact path='/myprofile' component={MyProfile}/>
+      <div id='portal'></div>
     </div>
   );
 }

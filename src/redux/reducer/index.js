@@ -34,7 +34,7 @@ switch(action.type) {
     case "GET_FRIENDS":
         return {
             ...state,
-            friendList: action.payload
+            friendList: action.payload[0].friends
         }
     case "ADD_FRIEND":
         return {
