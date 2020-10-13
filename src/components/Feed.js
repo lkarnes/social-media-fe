@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 import axiosWithAuth from '../functions/axiosWithAuth'
 import MakePost from './subComponents/MakePost'
 import {connect} from 'react-redux'
@@ -12,16 +12,15 @@ function Feed(props) {
           props.history.push('/')
         }
         if(props.id){
-          axiosWithAuth().get(`/posts/recent/${props.id}/3`).then(res => {
+          axiosWithAuth().get(`/posts/recent/${props.id}/0`).then(res => {
             props.fillFeed(res.data.reverse())
-            console.log(res)
         }).catch(err => {
-          console.log(err)
+          console.log({err})
         })
         }
       }, [props.id])
     return (
-        <div className='feed'>
+        <div id='feed-box' className='feed'>
           <div className='left-panel'>
 
           </div>
@@ -29,7 +28,10 @@ function Feed(props) {
           <div className='main-feed'>
             <MakePost />
             {props.feedArray.length === 0 ? <div>No Post Found...</div> :props.feedArray.map(post => (
-              <Post key={post.id} data={post} />
+              <div>
+                <Post key={post.id} data={{...post}} />
+              </div>
+              
             ))}
           </div>
 
