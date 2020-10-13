@@ -79,6 +79,40 @@ textarea, input {
     border: 1px solid $secondary-color;
   }
 }
+
+.modal-narrow {
+  position: fixed;
+  background: $foreground;
+  top: 50%;
+  left: 50%;
+  width: 400px;
+  max-height: 600px;
+  margin-top: -300px;
+  margin-left: -200px;
+  box-shadow: 0px 0px 8px rgb(168, 168, 168);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.friend-list {
+  width: 80%;
+  margin: 10px;
+  a {
+    text-decoration: none;
+  }
+  .list-item {
+    display: flex;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid $primary-color;
+    &:hover{
+      background: $third;
+    }
+  }
+}
+
+
 .modal-large {
   z-index: 2;
   position: fixed;

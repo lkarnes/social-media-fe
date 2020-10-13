@@ -12,8 +12,17 @@ function Header(props) {
             var decoded = jwt_decode(token)
             axiosWithAuth().get(`/getData/${decoded.subject}`).then(res => {
                 props.signIn(res.data)
-                axiosWithAuth().get(`/friends/all/${res.data.id}`).then(response => {
-                    props.getFriends(response.data)
+                axiosWithAuth().get(`/friends/all/${res.data.id}`).then(friendArr => {
+                    var response = []
+                    friendArr = friendArr.data[0].friends
+                    console.log(friendArr)
+                    friendArr.map(friend => {
+                        axiosWithAuth().get(`/friends/${friend}`).then(friendData => {
+                            response.push(friendData.data)
+                        })
+                    })
+                    console.log(response)
+                    props.getFriends(response)
                 })
             }).catch(err => {
                 console.log({err})

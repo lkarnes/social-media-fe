@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axiosWithAuth from '../functions/axiosWithAuth'
 import MakePost from './subComponents/MakePost'
-import ImageModal from './subComponents/ImageModal'
 import {connect} from 'react-redux'
 import {fillFeed} from '../redux/actions'
 

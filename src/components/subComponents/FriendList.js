@@ -1,19 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
+import {Link} from 'react-router-dom'
 import {connect} from 'react-redux';
 
 function FriendList(props){
     return (
 
-        <div className='modal-medium'>
+        <div className='modal-narrow'>
             <button onClick={props.toggle}>X</button>
-            {props.friendList.map(friend => (
-                <p key={friend.friend_id}>{friend.friend_id}</p>
-            ))}
+            <div className='friend-list'>
+                {props.friendList.length > 0 ? props.friendList.map(friend => (
+                    <Link className='list-item' to={`/profile/${friend.id}`}>{friend.first_name} {friend.last_name} aka {friend.username}</Link>
+                )) : <p> you have no friends</p>}
+            </div>
+            
         </div>
-        // <div className='friend-list'>
-        //     <p>Hellooo!!!!!!!!!!!!!!!!!</p>
-        //     
-        // </div>
     )
 }
 
