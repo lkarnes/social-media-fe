@@ -5,18 +5,35 @@ import Post from './subComponents/Post';
 import UserIcon from '../images/user-icon.png';
 
 function Profile(props) {
+    console.log(props)
+    const [toggle, setToggle] = useState(true)
     const [data,setData] = useState({})
     const [posts, setPosts] = useState([])
     useEffect(()=>{
+        console.log(props.friendList)
+        if(props.friendList.some(el => el.id === data.id)){
+            setToggle(false)
+        }else{
+            setToggle(true)
+        }
         axiosWithAuth().get(`/friends/${props.match.params.id}`).then(res => {
             setData(res.data)
             axiosWithAuth().get(`/posts/${props.match.params.id}/0`).then(res => {
                 setPosts(res.data.reverse())
             })
         })
-    }, [props])
+        
+    }, [toggle, props])
     const handleAddFriend = () => {
         axiosWithAuth().post('/friends/add', {friend_id: data.id, user_id: props.userData.id, friendship_status:'high'}).then(res =>{
+            console.log(res)
+        }).catch(err => {
+            console.log({err})
+        })
+    }
+
+    const handleRemoveFriend = () => {
+        axiosWithAuth().delete(`/friends/remove/${props.userData.id}/${data.id}`).then(res => {
             console.log(res)
         }).catch(err => {
             console.log({err})
@@ -28,7 +45,7 @@ function Profile(props) {
                 <img className='user-icon-large' src={data.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
                 <h2>{data.first_name} {data.last_name} aka {data.username}</h2>
                 <h5>email: {data.email}</h5>
-                <button className='button-1' onClick={handleAddFriend}>Add as Friend</button>
+                {toggle?<button className='button-1' onClick={handleAddFriend}>Add as Friend</button>:<button onClick={handleRemoveFriend}>Remove as Friend</button>}
             </div>
             
             <div className='post-box'>
@@ -43,7 +60,8 @@ function Profile(props) {
 }
 
 const mapStateToProps = state => ({
-    userData: state.userData                                    
+    userData: state.userData,
+    friendList : state.friendList                                    
 })
 
 export default connect(mapStateToProps)(Profile)

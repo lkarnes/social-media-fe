@@ -16,12 +16,11 @@ function Header(props) {
                     var response = []
                     friendArr = friendArr.data[0].friends
                     console.log(friendArr)
-                    friendArr.map(friend => {
+                        friendArr.map(friend => {
                         axiosWithAuth().get(`/friends/${friend}`).then(friendData => {
                             response.push(friendData.data)
                         })
                     })
-                    console.log(response)
                     props.getFriends(response)
                 })
             }).catch(err => {
