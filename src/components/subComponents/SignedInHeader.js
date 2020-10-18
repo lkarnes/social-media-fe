@@ -8,7 +8,8 @@ import Logo3 from '../../images/logo-3.png'
 function SignedInHeader(props) {
     const [bool, setBool] = useState(true)
     const handleLogout = () => {
-        console.log(props)
+        let item = document.getElementById('dropdown1')
+        item.style.display = 'none'
         localStorage.removeItem('token')
     } 
     const toggleDrop = () => {
@@ -24,7 +25,7 @@ function SignedInHeader(props) {
     return (
     <div className='header'>
         <div className='heading'>
-            <img className='logo' src={Logo3}/>
+            <img className='logo' src={Logo3} alt=''/>
         </div>
         <SearchBar/>
         <div className='Navigation'>

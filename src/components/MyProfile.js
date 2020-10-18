@@ -6,6 +6,7 @@ import UserIcon from '../images/user-icon.png';
 import MyProfileHeader from './subComponents/MyProfileHeader'
 import FriendList from './subComponents/FriendList'
 import Portal from './Portal'
+import MakePost from './subComponents/MakePost'
 function Profile(props) {
     const [posts, setPosts] = useState([])
     const [modal, setModal] = useState(false)
@@ -34,6 +35,7 @@ function Profile(props) {
                   <div id='profile'>
                     <MyProfileHeader {...props} toggle={toggleFriendsList}/>
                     <div className='post-box'>
+                        <MakePost/>
                         {posts.map(post => (
                         <Post key={post.id} data={post}/>
                         ))}

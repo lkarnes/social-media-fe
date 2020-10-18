@@ -5,12 +5,10 @@ import Post from './subComponents/Post';
 import UserIcon from '../images/user-icon.png';
 
 function Profile(props) {
-    console.log(props)
     const [toggle, setToggle] = useState(true)
     const [data,setData] = useState({})
     const [posts, setPosts] = useState([])
     useEffect(()=>{
-        console.log(props.friendList)
         if(props.friendList.some(el => el.id === data.id)){
             setToggle(false)
         }else{

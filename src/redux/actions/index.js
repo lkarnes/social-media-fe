@@ -25,3 +25,10 @@ export const getFriends = payload => {
         payload: payload
     }
 }
+
+export const likePost = payload => {
+    return {
+        type: 'LIKE_POST',
+        payload: payload
+    }
+}

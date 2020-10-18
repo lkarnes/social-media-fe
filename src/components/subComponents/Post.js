@@ -1,10 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {connect} from 'react-redux'
-import axiosWithAuth from '../../functions/axiosWithAuth';
-import userIcon from '../../images/user-icon.png'
-import ImageModal from './ImageModal'
-import Portal from '../Portal'
+import {connect} from 'react-redux';
 
+import axiosWithAuth from '../../functions/axiosWithAuth';
+import ImageModal from './ImageModal';
+import Portal from '../Portal';
+import PostFooter from './PostFooter';
+
+import userIcon from '../../images/user-icon.png';
 
 function Post({data}) {
     const [toggle, setToggle] = useState(false)
@@ -38,9 +40,9 @@ function Post({data}) {
                 <p className='body'>{data.body}</p>
                  {data.type === 'image' ? <img className='post-image' src={data.image} alt='' onClick={()=>toggleImageModal()}/> :'' }
             </div>
+            <PostFooter data={data} />
             <Portal>
                 {toggle?<ImageModal {...data} toggle={toggleImageModal} />:null}
-                
             </Portal>
             </div>
             

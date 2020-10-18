@@ -14,10 +14,9 @@ function Header(props) {
                 props.signIn(res.data)
                 axiosWithAuth().get(`/friends/all/${res.data.id}`).then(friendArr => {
                     var response = []
-                    friendArr = friendArr.data[0].friends
                     console.log(friendArr)
-                        friendArr.map(friend => {
-                        axiosWithAuth().get(`/friends/${friend}`).then(friendData => {
+                        friendArr.data.map(friend => {
+                        axiosWithAuth().get(`/friends/${friend.friend_id}`).then(friendData => {
                             response.push(friendData.data)
                         })
                     })
