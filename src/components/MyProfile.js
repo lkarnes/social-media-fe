@@ -7,19 +7,23 @@ import MyProfileHeader from './subComponents/MyProfileHeader'
 import FriendList from './subComponents/FriendList'
 import Portal from './Portal'
 import MakePost from './subComponents/MakePost'
+import Likes from './subComponents/Likes'
 function Profile(props) {
     const [posts, setPosts] = useState([])
-    const [modal, setModal] = useState(false)
-    var toggleFriendsList = () => {
+    const [friendsModal, setFriendsModal] = useState(false)
+    const [likes, setLikes] = useState(false)
+    const toggleFriendList = () => {
         const profile = document.getElementById('profile')
-        if(!modal){
-            setModal(true)
+        if(!friendsModal){
+            setFriendsModal(true)
             profile.classList.add('blur')
         }else{
-            setModal(false)
+            setFriendsModal(false)
             profile.classList.remove('blur')
-        }
-        
+        }  
+    }
+    const toggleLikes = () => {
+        setLikes(!likes)
     }
     useEffect(()=>{
         if (props.userData.id){
@@ -33,8 +37,9 @@ function Profile(props) {
        return (
             <>
                   <div id='profile'>
-                    <MyProfileHeader {...props} toggle={toggleFriendsList}/>
+                    <MyProfileHeader {...props} toggleFriendList={toggleFriendList} toggleLikes={toggleLikes}/>
                     <div className='post-box'>
+                        {likes ? <Likes/>:null}
                         <MakePost/>
                         {posts.map(post => (
                         <Post key={post.id} data={post}/>
@@ -42,7 +47,7 @@ function Profile(props) {
                     </div>
                 </div>
                     <Portal>
-                        {modal ? <FriendList toggle={toggleFriendsList}/>: null}
+                        {friendsModal ? <FriendList toggle={toggleFriendList}/>: null}
                     </Portal>
             </>
             

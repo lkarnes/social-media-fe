@@ -6,7 +6,7 @@ import {likePost} from '../../redux/actions'
 import axiosWithAuth from '../../functions/axiosWithAuth'
 
 function PostFooter(props){
-    const [likeToggle, setLikeToggle] = useState(false)
+    const [likeToggle, setLikeToggle] = useState()
     useEffect(()=>{
         if(props.likes.includes(props.data.id)){
             setLikeToggle(true)
@@ -14,11 +14,17 @@ function PostFooter(props){
     },[])
     const handleLike = () => {
         if(props.likes.includes(props.data.id)){
-            setLikeToggle(true)
-            props.data.likes--
-        }else{
             setLikeToggle(false)
+            props.data.likes--
+            axiosWithAuth().delete(`/unlike/post/${props.userData.id}/${props.data.id}`).then(res => {
+                console.log(res)
+            })
+        }else{
+            setLikeToggle(true)
             props.data.likes++
+            axiosWithAuth().get(`/like/${props.userData.id}/${props.data.id}`).then(res => {
+                console.log(res)
+            })
         }
         props.likePost(props.data.id)
     }
