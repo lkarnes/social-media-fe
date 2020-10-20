@@ -32,3 +32,17 @@ export const likePost = payload => {
         payload: payload
     }
 }
+
+export const removeFriend = payload => {
+    return {
+        type: 'REMOVE_FRIEND',
+        payload: payload
+    }
+}
+
+export const addFriend = payload => {
+    return {
+        type: 'ADD_FRIEND',
+        payload: payload
+    }
+}

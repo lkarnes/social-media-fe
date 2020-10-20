@@ -37,6 +37,11 @@ switch(action.type) {
             ...state,
             friendList: action.payload
         }
+    case "REMOVE_FRIEND":
+        return {
+            ...state,
+            friendList: state.friendList.filter(f => f.id !== action.payload)
+        }
     case "ADD_FRIEND":
         return {
             ...state,

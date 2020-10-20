@@ -28,7 +28,7 @@ function Header(props) {
             })
         }
         
-    },[props])
+    },[])
     return props.userData.id === null ? (
         <div>
         </div>
