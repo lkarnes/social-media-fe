@@ -8,7 +8,8 @@ export const initialState = {
         profile_picture: null
     },
     feedArray: [],
-    friendList: []
+    friendList: [],
+    likes: []
 
 }
 
@@ -36,10 +37,29 @@ switch(action.type) {
             ...state,
             friendList: action.payload
         }
+    case "REMOVE_FRIEND":
+        return {
+            ...state,
+            friendList: state.friendList.filter(f => f.id !== action.payload)
+        }
     case "ADD_FRIEND":
         return {
             ...state,
             friendList: [action.payload , ...state.friendList]
+        }
+    case "LIKE_POST":
+        if(state.likes.includes(action.payload)){
+            var newLikes = state.likes
+            var index = state.likes.indexOf(action.payload)
+            newLikes.pop(index)
+            return {
+                ...state,
+                likes: newLikes
+            }
+        }
+        return {
+            ...state,
+            likes: [action.payload, ...state.likes]
         }
     default:
         return state

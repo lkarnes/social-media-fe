@@ -9,17 +9,15 @@ function SearchBar(props) {
     const history = useHistory()
     const[search , setSearch] = useState('')
     const[searchData, setSearchData] = useState([])
-    useEffect(()=>{
-        
-    },[searchData])
     const handleUserClick = user => {
         setSearchData([])
         setSearch('')
         history.push(`/profile/${user.id}`)
+        document.location.reload()
     }
     const handleChange = e => {
         setSearch(e.target.value)
-        if(search.length >= 2){
+        if(e.target.value.length >= 2){
             axiosWithAuth().get(`/friends/users/${e.target.value}`).then(res => {
                 setSearchData(res.data)
             })

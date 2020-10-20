@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axiosWithAuth from '../functions/axiosWithAuth'
 import MakePost from './subComponents/MakePost'
 import {connect} from 'react-redux'
-import {fillFeed} from '../redux/actions'
+import {fillFeed, addPost} from '../redux/actions'
 
 import Post from './subComponents/Post'
 
@@ -49,4 +49,4 @@ const mapStateToProps = state => ({
   feedArray: state.feedArray  
 })
 
-export default connect(mapStateToProps, {fillFeed})(Feed)
+export default connect(mapStateToProps, {fillFeed, addPost})(Feed)

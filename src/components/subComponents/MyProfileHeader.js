@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {connect} from 'react-redux'
 import Icon from '../../images/user-icon.png'
 
@@ -10,15 +10,14 @@ function MyProfileHeader(props){
                 <div className='user-data'>
                     <h5>{props.userData.first_name} {props.userData.last_name} aka {props.userData.username}</h5>
                     <p>email: {props.userData.email}</p>
-                    <button onClick={props.toggle}>FriendsList</button>
+                    <button onClick={props.toggleFriendList}>Friends</button>
+                    <button onClick={props.toggleLikes}>Likes</button>
+                    <button onClick={props.toggleEdit}>Edit</button>
                 </div> 
             </div>
         </>
-        
     )
 }
-const mapStateToProps = state => ({
-    userData: state.userData,
-})
 
-export default connect(mapStateToProps)(MyProfileHeader)
+
+export default MyProfileHeader
