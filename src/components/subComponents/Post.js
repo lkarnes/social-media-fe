@@ -49,4 +49,4 @@ function Post({data}) {
     )
 }
 
-export default connect()(Post)
+export default Post
