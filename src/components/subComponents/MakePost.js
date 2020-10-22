@@ -17,7 +17,6 @@ function MakePost(props){
             textarea.rows = 2;
         }
     }
-
     const handleSelect = e => {
         e.preventDefault()
         var hiddenInput = document.getElementById('file-input')
