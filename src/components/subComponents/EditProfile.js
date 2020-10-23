@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import Icon from '../../images/user-icon.png'
 
+import {signIn} from '../../redux/actions'
+
 function EditProfile(props){
     const formElem = React.useRef()
     const handleSave = e => {
@@ -16,6 +18,8 @@ function EditProfile(props){
          formData.append('password', props.userData.password)
         axios.put(`https://social-1.herokuapp.com/api/edit/${props.userData.id}`, formData).then(res =>{
             console.log(res)
+            props.signIn(res.data.data)
+            props.toggleEdit()
         }).catch(err => {
             alert(err)
             console.log({err})
@@ -50,4 +54,4 @@ const mapStateToProps = state => ({
     userData: state.userData
 })
 
-export default connect(mapStateToProps)(EditProfile)
+export default connect(mapStateToProps,{signIn})(EditProfile)
