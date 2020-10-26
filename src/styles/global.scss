@@ -156,3 +156,9 @@ textarea, input {
 .none{
   display: none;
 }
+
+.text-button {
+  &:hover{
+    color: $third-color
+  }
+}

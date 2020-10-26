@@ -34,9 +34,11 @@
             width: 100%;
             margin-top: 5px;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            .like-font{
+            .footer-font{
                 font-size: 15px;
+                margin-right: 10px;
             }
         }
     .post-image {
@@ -63,6 +65,20 @@
             padding: 5px;
         }
         
-}
     }
+    @keyframes comments {
+        0% {min-height: 0px;
+        opacity: 0%;}
+        100% {min-height: 100px;
+        opacity: 100%;}
+    }
+    .comments {
+        color: $primary-color;
+        width: 100%;
+        min-height: 100px;
+        border: 1px solid $primary;
+        animation-name: comments;
+        animation-duration: 1s;
+    }
+}
     
