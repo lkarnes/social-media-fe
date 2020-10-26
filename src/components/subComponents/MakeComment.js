@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 
 function MakeComment(props){
     return (
-        <form>
-            <textarea type='text' name='body' defaultValue='write your thoughts...' />
+        <form className='comment-form'>
+            <textarea type='text' name='body' placeholder='write a comment' />
+            <button>Send</button>
         </form>
     )
 }

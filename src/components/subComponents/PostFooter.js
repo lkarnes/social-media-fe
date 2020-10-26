@@ -6,6 +6,7 @@ import {likePost} from '../../redux/actions'
 import axiosWithAuth from '../../functions/axiosWithAuth'
 
 import Comments from './Comments';
+import MakeComments from './MakeComment';
 
 function PostFooter(props){
     const [commentsToggle, setCommentsToggle] = useState(false)
@@ -38,6 +39,7 @@ function PostFooter(props){
             <p className='footer-font'>{props.data.likes} likes</p>
             <p className='footer-font text-button' onClick={()=>setCommentsToggle(!commentsToggle)}>{props.data.comments} comments</p> 
         </div>
+        <MakeComments/>
         {commentsToggle? <Comments/> : null}
         </>
     )

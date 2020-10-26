@@ -80,5 +80,29 @@
         animation-name: comments;
         animation-duration: .5s;
     }
+    .comment-form{
+        color: $primary-color;
+        width: 100%;
+        display: flex;
+        textarea {
+            background: $background;
+            width: 85%;
+            font-size: 15px;
+            height: 25px;
+            resize: none;
+            border: none;
+            -ms-overflow-style:auto;
+            border: 1px solid $primary;
+        &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+        button {
+            background: $background;
+            width: 14%;
+            border: 1px solid $primary;
+            font-size: 12px;
+        }
+    }
 }
     
