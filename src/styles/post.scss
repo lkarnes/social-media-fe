@@ -34,9 +34,11 @@
             width: 100%;
             margin-top: 5px;
             display: flex;
+            flex-wrap: wrap;
             align-items: center;
-            .like-font{
+            .footer-font{
                 font-size: 15px;
+                margin-right: 10px;
             }
         }
     .post-image {
@@ -63,6 +65,44 @@
             padding: 5px;
         }
         
-}
     }
+    @keyframes comments {
+        0% {min-height: 0px;
+        opacity: 0%;}
+        100% {min-height: 100px;
+        opacity: 100%;}
+    }
+    .comments {
+        color: $primary-color;
+        width: 100%;
+        min-height: 100px;
+        border: 1px solid $primary;
+        animation-name: comments;
+        animation-duration: .5s;
+    }
+    .comment-form{
+        color: $primary-color;
+        width: 100%;
+        display: flex;
+        textarea {
+            background: $background;
+            width: 85%;
+            font-size: 15px;
+            height: 25px;
+            resize: none;
+            border: none;
+            -ms-overflow-style:auto;
+            border: 1px solid $primary;
+        &::-webkit-scrollbar {
+            display: none;
+          }
+        }
+        button {
+            background: $background;
+            width: 14%;
+            border: 1px solid $primary;
+            font-size: 12px;
+        }
+    }
+}
     

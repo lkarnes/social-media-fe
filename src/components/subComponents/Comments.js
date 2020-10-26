@@ -1,10 +1,9 @@
 import React from 'react';
-import connect from 'react-redux';
+import {connect} from 'react-redux';
 
 function Comments(props){
     return (
-        <div>
-
+        <div className='comments'>
         </div>
     )
 }
