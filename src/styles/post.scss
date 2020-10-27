@@ -79,6 +79,25 @@
         border: 1px solid $primary;
         animation-name: comments;
         animation-duration: .5s;
+        .comment {
+            .comment-tag {
+                background: $background;
+                width: 100%;
+                height: 30px;
+                align-items: center;
+                display: flex;
+                justify-content: flex-start;
+                .username {
+                    width: 75%;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+                
+            }
+            .body {
+                font-size: 16px;
+            }
+        }
     }
     .comment-form{
         color: $primary-color;

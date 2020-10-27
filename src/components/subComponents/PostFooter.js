@@ -9,6 +9,13 @@ import Comments from './Comments';
 import MakeComments from './MakeComment';
 
 function PostFooter(props){
+    const incrementComment = () => {
+        props.data.comments++
+        console.log('working', props)
+    }
+    const decrementComment = () => {
+        props.data.comments--
+    }
     const [commentsToggle, setCommentsToggle] = useState(false)
     const [likeToggle, setLikeToggle] = useState()
     useEffect(()=>{
@@ -39,8 +46,8 @@ function PostFooter(props){
             <p className='footer-font'>{props.data.likes} likes</p>
             <p className='footer-font text-button' onClick={()=>setCommentsToggle(!commentsToggle)}>{props.data.comments} comments</p> 
         </div>
-        <MakeComments/>
-        {commentsToggle? <Comments/> : null}
+        {commentsToggle? <Comments post_id={props.data.id}/> : null}
+        <MakeComments data={props.data} incrementComment={incrementComment} decrementComment={decrementComment}/>
         </>
     )
 }

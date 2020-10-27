@@ -1,13 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {connect} from 'react-redux';
+import axiosWithAuth from '../../functions/axiosWithAuth'
 
 function MakeComment(props){
+    console.log(props)
+    const [comment, setComment] = useState({
+        user_id: props.user_id,
+        post_id: props.data.id
+    })
+
+    const handleChange = e => {
+        comment[e.target.name] = e.target.value
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        axiosWithAuth().post('/comments/add', comment).then(res => {
+            props.incrementComment();
+            console.log(res)
+        })
+    }
     return (
         <form className='comment-form'>
-            <textarea type='text' name='body' placeholder='write a comment' />
-            <button>Send</button>
+            <textarea type='text' name='body' value={comment.body} onChange={handleChange} placeholder='write a comment' />
+            <button onClick={handleSubmit}>Send</button>
         </form>
     )
 }
 
-export default connect ()(MakeComment)
+const mapStateToProps = state => ({
+    user_id: state.userData.id
+})
+
+export default connect (mapStateToProps)(MakeComment)

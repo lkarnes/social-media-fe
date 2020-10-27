@@ -60,6 +60,17 @@ textarea, input {
     border: 1px solid black
   }
 }
+.user-icon-xsmall {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  margin-right: 5px;
+  &:hover{
+    border: 1px solid black
+  }
+}
 .user-icon-large {
   width: 100px;
   height: 100px;
