@@ -11,11 +11,11 @@ function MakeComment(props){
     const handleChange = e => {
         comment[e.target.name] = e.target.value
     }
-
+    console.log(props)
     const handleSubmit = e => {
         e.preventDefault()
-        axiosWithAuth().post('/comments/add', comment).then(res => {    
-            props.incrementComment();      
+        axiosWithAuth().post('/comments/add', comment).then(res => {         
+            props.postState.setData({...props.postState.data, comments: [...props.postState.data.comments, comment]})
         })
         setComment({
             user_id: props.user_id,

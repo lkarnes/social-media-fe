@@ -10,20 +10,18 @@ import MakeComments from './MakeComment';
 
 function PostFooter(props){
     const [data, setData] = useState(props.data)
-    const incrementComment = () => {
-        setData({...data, comments: data.comments++})
-    }
-    const decrementComment = () => {
-        console.log('being called')
-        setData({...data, comments: data.comments--})
-    }
-    const [commentsToggle, setCommentsToggle] = useState(false)
-    const [likeToggle, setLikeToggle] = useState()
-    useEffect(()=>{
+    useEffect(()=>{    
+        axiosWithAuth().get(`/comments/${props.data.id}`).then(res => {
+            setData({...data, comments: res.data})
+        })
+
         if(props.likes.includes(props.data.id)){
             setLikeToggle(true)
         }
     },[])
+    const [commentsToggle, setCommentsToggle] = useState(false)
+    const [likeToggle, setLikeToggle] = useState()
+    
     const handleLike = () => {
         if(props.likes.includes(props.data.id)){
             setLikeToggle(false)
@@ -46,13 +44,13 @@ function PostFooter(props){
             <img src={likeToggle?ThumbSolid:ThumbTrans} style={{width: 20}} alt='like button' onClick={handleLike} />
             <p className='footer-font'>{data.likes} likes</p>
             <p className='footer-font text-button' onClick={()=>{
-                if(data.comments > 0){
+                if(data.comments.length > 0){
                     setCommentsToggle(!commentsToggle)
                 }
-                }}>{data.comments} comments</p> 
+                }}>{data.comments.length} comments</p> 
         </div>
-        {commentsToggle? <Comments decrementComment={decrementComment} post_id={props.data.id}/> : null}
-        <MakeComments data={props.data} incrementComment={incrementComment} postState={data, setData} />
+        {commentsToggle? <Comments  postState={{data, setData}}/> : null}
+        <MakeComments data={props.data} postState={{data, setData}} />
         </>
     )
 }
