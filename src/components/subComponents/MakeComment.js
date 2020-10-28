@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import axiosWithAuth from '../../functions/axiosWithAuth'
 
 function MakeComment(props){
-    console.log(props)
     const [comment, setComment] = useState({
         user_id: props.user_id,
         post_id: props.data.id
@@ -15,15 +14,19 @@ function MakeComment(props){
 
     const handleSubmit = e => {
         e.preventDefault()
-        axiosWithAuth().post('/comments/add', comment).then(res => {
-            props.incrementComment();
-            console.log(res)
+        axiosWithAuth().post('/comments/add', comment).then(res => {    
+            props.incrementComment();      
+        })
+        setComment({
+            user_id: props.user_id,
+            post_id: props.data.id, 
+            body: ''
         })
     }
     return (
         <form className='comment-form'>
             <textarea type='text' name='body' value={comment.body} onChange={handleChange} placeholder='write a comment' />
-            <button onClick={handleSubmit}>Send</button>
+            <button type='submit ' onClick={handleSubmit}>Send</button>
         </form>
     )
 }

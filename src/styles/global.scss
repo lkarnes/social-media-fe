@@ -46,7 +46,11 @@ textarea, input {
 }
 .delete-button {
   width: 15px;
-  height: 17px;
+  height: 15px;
+  border-radius: 50%;
+  &:hover{
+    background: $button2;
+  }
 }
 
 .user-icon-small {

@@ -22,7 +22,6 @@ switch(action.type) {
             userData: action.payload
         }
     case "ADD_POST":
-        console.log('add post is working')
         return {
             ...state,
             feedArray: [action.payload , ...state.feedArray]

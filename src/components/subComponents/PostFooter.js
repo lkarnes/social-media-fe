@@ -9,12 +9,13 @@ import Comments from './Comments';
 import MakeComments from './MakeComment';
 
 function PostFooter(props){
+    const [data, setData] = useState(props.data)
     const incrementComment = () => {
-        props.data.comments++
-        console.log('working', props)
+        setData({...data, comments: data.comments++})
     }
     const decrementComment = () => {
-        props.data.comments--
+        console.log('being called')
+        setData({...data, comments: data.comments--})
     }
     const [commentsToggle, setCommentsToggle] = useState(false)
     const [likeToggle, setLikeToggle] = useState()
@@ -26,13 +27,13 @@ function PostFooter(props){
     const handleLike = () => {
         if(props.likes.includes(props.data.id)){
             setLikeToggle(false)
-            props.data.likes--
+            setData({...data, likes: data.likes--})
             axiosWithAuth().delete(`/unlike/post/${props.userData.id}/${props.data.id}`).then(res => {
                 console.log(res)
             })
         }else{
             setLikeToggle(true)
-            props.data.likes++
+            setData({...data, likes: data.likes++})
             axiosWithAuth().get(`/like/${props.userData.id}/${props.data.id}`).then(res => {
                 console.log(res)
             })
@@ -43,11 +44,15 @@ function PostFooter(props){
         <>
         <div className='post-footer'>
             <img src={likeToggle?ThumbSolid:ThumbTrans} style={{width: 20}} alt='like button' onClick={handleLike} />
-            <p className='footer-font'>{props.data.likes} likes</p>
-            <p className='footer-font text-button' onClick={()=>setCommentsToggle(!commentsToggle)}>{props.data.comments} comments</p> 
+            <p className='footer-font'>{data.likes} likes</p>
+            <p className='footer-font text-button' onClick={()=>{
+                if(data.comments > 0){
+                    setCommentsToggle(!commentsToggle)
+                }
+                }}>{data.comments} comments</p> 
         </div>
-        {commentsToggle? <Comments post_id={props.data.id}/> : null}
-        <MakeComments data={props.data} incrementComment={incrementComment} decrementComment={decrementComment}/>
+        {commentsToggle? <Comments decrementComment={decrementComment} post_id={props.data.id}/> : null}
+        <MakeComments data={props.data} incrementComment={incrementComment} postState={data, setData} />
         </>
     )
 }
