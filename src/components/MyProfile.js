@@ -38,7 +38,7 @@ function Profile(props) {
             });
         };
         
-    }, [props.userData]);
+    }, []);
     if (props.userData.id){
        return (
             <>

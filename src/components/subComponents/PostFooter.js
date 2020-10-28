@@ -9,23 +9,29 @@ import Comments from './Comments';
 import MakeComments from './MakeComment';
 
 function PostFooter(props){
-    const [commentsToggle, setCommentsToggle] = useState(false)
-    const [likeToggle, setLikeToggle] = useState()
-    useEffect(()=>{
+    const [data, setData] = useState(props.data)
+    useEffect(()=>{    
+        axiosWithAuth().get(`/comments/${props.data.id}`).then(res => {
+            setData({...data, comments: res.data})
+        })
+
         if(props.likes.includes(props.data.id)){
             setLikeToggle(true)
         }
     },[])
+    const [commentsToggle, setCommentsToggle] = useState(false)
+    const [likeToggle, setLikeToggle] = useState()
+    
     const handleLike = () => {
         if(props.likes.includes(props.data.id)){
             setLikeToggle(false)
-            props.data.likes--
+            setData({...data, likes: data.likes--})
             axiosWithAuth().delete(`/unlike/post/${props.userData.id}/${props.data.id}`).then(res => {
                 console.log(res)
             })
         }else{
             setLikeToggle(true)
-            props.data.likes++
+            setData({...data, likes: data.likes++})
             axiosWithAuth().get(`/like/${props.userData.id}/${props.data.id}`).then(res => {
                 console.log(res)
             })
@@ -36,11 +42,15 @@ function PostFooter(props){
         <>
         <div className='post-footer'>
             <img src={likeToggle?ThumbSolid:ThumbTrans} style={{width: 20}} alt='like button' onClick={handleLike} />
-            <p className='footer-font'>{props.data.likes} likes</p>
-            <p className='footer-font text-button' onClick={()=>setCommentsToggle(!commentsToggle)}>{props.data.comments} comments</p> 
+            <p className='footer-font'>{data.likes} likes</p>
+            <p className='footer-font text-button' onClick={()=>{
+                if(data.comments.length > 0){
+                    setCommentsToggle(!commentsToggle)
+                }
+                }}>{data.comments.length} comments</p> 
         </div>
-        <MakeComments/>
-        {commentsToggle? <Comments/> : null}
+        {commentsToggle? <Comments  postState={{data, setData}}/> : null}
+        <MakeComments data={props.data} postState={{data, setData}} />
         </>
     )
 }

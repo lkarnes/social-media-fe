@@ -66,19 +66,36 @@
         }
         
     }
-    @keyframes comments {
-        0% {min-height: 0px;
-        opacity: 0%;}
-        100% {min-height: 100px;
-        opacity: 100%;}
-    }
     .comments {
         color: $primary-color;
         width: 100%;
-        min-height: 100px;
         border: 1px solid $primary;
         animation-name: comments;
-        animation-duration: .5s;
+        animation-duration: .3s;
+        .comment {
+            
+            min-height: 50px;
+            .comment-tag {
+                background: $background;
+                width: 100%;
+                height: 30px;
+                align-items: center;
+                display: flex;
+                justify-content: flex-start;
+                .username {
+                    width: 75%;
+                    font-size: 16px;
+                    font-weight: 600;
+                }
+                .delete {
+                    align-self: flex-end;
+                }
+            }
+            .body {
+                font-size: 16px;
+                padding: 10px 5px;
+            }
+        }
     }
     .comment-form{
         color: $primary-color;

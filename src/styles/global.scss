@@ -46,13 +46,28 @@ textarea, input {
 }
 .delete-button {
   width: 15px;
-  height: 17px;
+  height: 15px;
+  border-radius: 50%;
+  &:hover{
+    background: $button2;
+  }
 }
 
 .user-icon-small {
   box-sizing: border-box;
   width: 40px;
   height: 40px;
+  border: 1px solid transparent;
+  border-radius: 50%;
+  margin-right: 5px;
+  &:hover{
+    border: 1px solid black
+  }
+}
+.user-icon-xsmall {
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
   border: 1px solid transparent;
   border-radius: 50%;
   margin-right: 5px;
