@@ -19,6 +19,13 @@ export const fillFeed = payload => {
     }
 }
 
+export const addToFeed = payload => {
+    return {
+        type: 'ADD_TO_FEED',
+        payload: payload
+    }
+}
+
 export const getFriends = payload => {
     return {
         type:'GET_FRIENDS',

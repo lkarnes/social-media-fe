@@ -31,6 +31,11 @@ switch(action.type) {
             ...state,
             feedArray: [...action.payload]
         }
+    case "ADD_TO_FEED":
+        return {
+            ...state,
+            feedArray: [...state.feedArray, ...action.payload]
+        }
     case "GET_FRIENDS":
         return {
             ...state,

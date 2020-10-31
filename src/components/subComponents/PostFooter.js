@@ -44,10 +44,13 @@ function PostFooter(props){
             <img src={likeToggle?ThumbSolid:ThumbTrans} style={{width: 20}} alt='like button' onClick={handleLike} />
             <p className='footer-font'>{data.likes} likes</p>
             <p className='footer-font text-button' onClick={()=>{
-                if(data.comments.length > 0){
-                    setCommentsToggle(!commentsToggle)
+                if(data){
+                    if(data.comments.length >  0){
+                        setCommentsToggle(!commentsToggle)
+                    }
+                    
                 }
-                }}>{data.comments.length} comments</p> 
+                }}>{data.comments?data.comments.length: 0} comments</p> 
         </div>
         {commentsToggle? <Comments  postState={{data, setData}}/> : null}
         <MakeComments data={props.data} postState={{data, setData}} />
