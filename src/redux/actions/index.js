@@ -18,7 +18,12 @@ export const fillFeed = payload => {
         payload: payload
     }
 }
-
+export const removeFromFeed = payload => {
+    return {
+        type: 'REMOVE_FROM_FEED',
+        payload: payload
+    }
+}
 export const addToFeed = payload => {
     return {
         type: 'ADD_TO_FEED',
@@ -26,12 +31,7 @@ export const addToFeed = payload => {
     }
 }
 
-export const removeFromFeed = payload => {
-    return {
-        type: 'REMOVE_FROM_FEED',
-        payload: payload
-    }
-}
+
 
 export const getFriends = payload => {
     return {

@@ -6,9 +6,11 @@ import ImageModal from './ImageModal';
 import Portal from '../Portal';
 import PostFooter from './PostFooter';
 
+import {removeFromFeed} from '../../redux/actions'
+
 import userIcon from '../../images/user-icon.png';
 
-function Post({data, id}) {
+function Post({data, id, removeFromFeed}) {
     const [toggle, setToggle] = useState(false)
     const [posterData, setPosterData] = useState({})
     let date = new Date(data.created_at)
@@ -30,13 +32,11 @@ function Post({data, id}) {
     }
     const handleDelete = () => {
         axiosWithAuth().delete(`/posts/remove/${data.id}`).then(res => {
-            console.log('success')
-            
+            removeFromFeed(data.id)
         })
     }
     return (
         <div className='single-post'>
-            
             <div className='user-tag'>
                 {posterData.image?<img className='user-icon-small' src={posterData.image} alt='profile picture'  />: <img className='user-icon-small' src={userIcon} />}
                 <p className='username'>{posterData.username}</p>
@@ -61,4 +61,4 @@ const mapStateToProps = state =>({
     id: state.userData.id
 })
 
-export default connect(mapStateToProps)(Post)
+export default connect(mapStateToProps, {removeFromFeed})(Post)

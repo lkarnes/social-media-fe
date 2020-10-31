@@ -10,7 +10,7 @@ import MakeComments from './MakeComment';
 
 function PostFooter(props){
     const [data, setData] = useState(props.data)
-    useEffect(()=>{    
+    useEffect(()=>{
         axiosWithAuth().get(`/comments/${props.data.id}`).then(res => {
             setData({...data, comments: res.data})
         })
