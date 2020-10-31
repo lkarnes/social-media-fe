@@ -9,12 +9,13 @@ import Post from './subComponents/Post'
 function Feed(props) {
     const [offset, setOffset] = useState(0)
     useEffect(()=>{
+      console.log(offset)
         if(!localStorage.getItem('token')){
           props.history.push('/')
         }
         if(props.id){
           axiosWithAuth().get(`/posts/recent/${props.id}/0`).then(res => {
-            props.fillFeed(res.data.reverse())
+            props.fillFeed(res.data)
         }).catch(err => {
           console.log({err})
         })
@@ -23,8 +24,9 @@ function Feed(props) {
 
       const handleLoadMore = () =>{
         setOffset(offset+15)
-        axiosWithAuth().get(`/posts/recent/${props.id}/${offset}`).then(res => {
-          props.addToFeed(res.data.reverse());
+        axiosWithAuth().get(`/posts/recent/${props.id}/${offset + 15}`).then(res => {
+          props.addToFeed(res.data);
+          console.log(res)
         }).catch(err => {
           console.log({err})
         })

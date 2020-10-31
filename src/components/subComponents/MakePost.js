@@ -6,8 +6,12 @@ import ImagePreview from './ImagePreview';
 
 function MakePost(props){
     const formElement = React.useRef()
-    const [data] = useState({})
-   
+    var initialState = {
+        poster_id: props.id,
+        type: '',
+        status: 'public',
+    }
+    const [data, setData] = useState(initialState)
         
     const adjustHeight = () => {
         const textarea = document.getElementById('textarea')
@@ -30,6 +34,11 @@ function MakePost(props){
             photoBox.style.display = 'flex'
         }
     }
+
+    const handleChange = e => {
+      data[e.target.name]= e.target.value
+    }
+
     const handleSubmit = e => {
         e.preventDefault() 
         const formData = new FormData(formElement.current)
@@ -41,9 +50,11 @@ function MakePost(props){
         }else{
             formData.append('type', 'image')
         }
+        console.log(data)
         axiosWithAuth().post('/posts/createpost/', formData).then(res=>{
-            props.addPost(res.data)
+            props.addPost(res.data)    
         }).catch(err => {console.log({err})})
+        setData(initialState)
     }
     
     return (
@@ -51,9 +62,15 @@ function MakePost(props){
                 <h4>Create a Post</h4>
             <form onSubmit={handleSubmit} ref={formElement} >
                 <p className='error' id='max-length' style={{'display':'none'}}>The body is at max length</p>
-                <input id='title' placeholder='Title(Optional)' type='text' name='header' value={data.header}/>
-                <textarea id='textarea' rows='2' placeholder='Body(Required)' name='body' value={data.body} onChange={adjustHeight}/>
-                <input id='file-input' type='file' name='image' style={{display:'none'}} accept="image/*" onChange={handleUpload}/>    
+                <input id='title' placeholder='Title(Optional)' type='text' name='header' value={data.header} onChange={handleChange}/>
+                <textarea id='textarea' rows='2' placeholder='Body(Required)' name='body' value={data.body} onChange={e=> {
+                    adjustHeight(); 
+                    handleChange(e);
+                    }}/>
+                <input id='file-input' type='file' name='image' style={{display:'none'}} accept="image/*" value={data.image} onChange={(e) => {
+                    handleUpload(e)
+                    handleChange(e)
+                    }}/>    
                 <button className='upload-button' onClick={handleSelect}>Add a Image</button>
                 <button className='submit-button' type='submit' onClick={handleSubmit}>Post</button>
             </form>
