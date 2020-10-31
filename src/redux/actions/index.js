@@ -26,6 +26,13 @@ export const addToFeed = payload => {
     }
 }
 
+export const removeFromFeed = payload => {
+    return {
+        type: 'REMOVE_FROM_FEED',
+        payload: payload
+    }
+}
+
 export const getFriends = payload => {
     return {
         type:'GET_FRIENDS',

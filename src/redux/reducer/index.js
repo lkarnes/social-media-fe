@@ -36,6 +36,11 @@ switch(action.type) {
             ...state,
             feedArray: [...state.feedArray, ...action.payload]
         }
+    case "REMOVE_FROM_FEED":
+        return {
+            ...state,
+            feedArray: state.feedArray.filter(p => p.id !== action.payload)
+        }
     case "GET_FRIENDS":
         return {
             ...state,

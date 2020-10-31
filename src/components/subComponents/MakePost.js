@@ -36,12 +36,18 @@ function MakePost(props){
     }
 
     const handleChange = e => {
-      data[e.target.name]= e.target.value
+      data[e.target.name] = e.target.value
     }
 
     const handleSubmit = e => {
         e.preventDefault() 
+        setData({
+            poster_id: props.id,
+            type: '',
+            status: 'public',
+        })
         const formData = new FormData(formElement.current)
+        const photoBox = document.getElementById('photo-box')
         formData.append('poster_id', props.id)
         formData.append('status', 'public')
         console.log(formData.get('image'))
@@ -54,7 +60,8 @@ function MakePost(props){
         axiosWithAuth().post('/posts/createpost/', formData).then(res=>{
             props.addPost(res.data)    
         }).catch(err => {console.log({err})})
-        setData(initialState)
+        
+        photoBox.style.display = 'none';
     }
     
     return (
