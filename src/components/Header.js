@@ -15,15 +15,15 @@ function Header(props) {
                 props.signIn(res.data)
                 //gets all friends
                 axiosWithAuth().get(`/friends/all/${res.data.id}`).then(friendArr => {
-                    var response = []
-                        friendArr.data.map(friend => {
+                    Promise.all(friendArr.data.map(friend => {
                         //gets data for friend
-                        axiosWithAuth().get(`/friends/${friend.friend_id}`).then(friendData => {
-                            response.push(friendData.data)
-                        })
+                        return axiosWithAuth().get(`/friends/${friend.friend_id}`)
+                    })).then(response => {
+                        props.getFriends(response.map(obj => {return obj.data}))
                     })
                     //adds data to store
-                    props.getFriends(response)
+                    // console.log(response)
+                    // props.getFriends(response)
                 })
             }).catch(err => {
                 console.log({err})
@@ -31,7 +31,7 @@ function Header(props) {
             })
         }
         
-    },[])
+    },[props.id])
     return props.userData.id === null ? null : (<SignedInHeader/>)
 }
 

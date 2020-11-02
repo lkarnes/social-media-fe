@@ -6,10 +6,13 @@ import ImageModal from './ImageModal';
 import Portal from '../Portal';
 import PostFooter from './PostFooter';
 
+import {removeFromFeed} from '../../redux/actions'
+
 import userIcon from '../../images/user-icon.png';
 
-function Post({data}) {
+function Post({data, id, removeFromFeed}) {
     const [toggle, setToggle] = useState(false)
+    const [removed, setRemoved] = useState(false)
     const [posterData, setPosterData] = useState({})
     let date = new Date(data.created_at)
     useEffect(()=> {
@@ -17,7 +20,6 @@ function Post({data}) {
             setPosterData(res.data)
         })
     }, [])
-
     const toggleImageModal = () => {
         const feed = document.getElementById('feed-box')
         if(toggle){
@@ -27,13 +29,20 @@ function Post({data}) {
         }
         setToggle(!toggle)
     }
+    const handleDelete = () => {
+        axiosWithAuth().delete(`/posts/remove/${data.id}`).then(res => {
+            removeFromFeed(data.id)
+            setRemoved(true)
+        })
+    }
 
-    return (
+    return !removed?(
         <div className='single-post'>
             <div className='user-tag'>
                 {posterData.image?<img className='user-icon-small' src={posterData.image} alt='profile picture'  />: <img className='user-icon-small' src={userIcon} />}
                 <p className='username'>{posterData.username}</p>
                 <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
+                {id === data.poster_id?<button onClick={handleDelete}>X</button>: null}
             </div>
             <div className='post-data'>
                 <p className='title'>{data.header}</p>
@@ -45,8 +54,11 @@ function Post({data}) {
                 {toggle?<ImageModal {...data} toggle={toggleImageModal} />:null}
             </Portal>
             </div>
-            
-    )
+        ):<div className='single-post'>this post has been removed...</div>
 }
 
-export default Post
+const mapStateToProps = state =>({
+    id: state.userData.id
+})
+
+export default connect(mapStateToProps, {removeFromFeed})(Post)

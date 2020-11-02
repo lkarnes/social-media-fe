@@ -8,7 +8,7 @@ export const initialState = {
         profile_picture: null
     },
     feedArray: [],
-    friendList: [],
+    friendList: null,
     likes: []
 
 }
@@ -30,6 +30,16 @@ switch(action.type) {
         return {
             ...state,
             feedArray: [...action.payload]
+        }
+    case "ADD_TO_FEED":
+        return {
+            ...state,
+            feedArray: [...state.feedArray, ...action.payload]
+        }
+    case "REMOVE_FROM_FEED":
+        return {
+            ...state,
+            feedArray: state.feedArray.filter(p => p.id !== action.payload)
         }
     case "GET_FRIENDS":
         return {
