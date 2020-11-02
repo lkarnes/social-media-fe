@@ -12,15 +12,14 @@ import userIcon from '../../images/user-icon.png';
 
 function Post({data, id, removeFromFeed}) {
     const [toggle, setToggle] = useState(false)
+    const [removed, setRemoved] = useState(false)
     const [posterData, setPosterData] = useState({})
     let date = new Date(data.created_at)
     useEffect(()=> {
-        
         axiosWithAuth().get(`/friends/${data.poster_id}`).then(res => {
             setPosterData(res.data)
         })
     }, [])
-
     const toggleImageModal = () => {
         const feed = document.getElementById('feed-box')
         if(toggle){
@@ -33,9 +32,11 @@ function Post({data, id, removeFromFeed}) {
     const handleDelete = () => {
         axiosWithAuth().delete(`/posts/remove/${data.id}`).then(res => {
             removeFromFeed(data.id)
+            setRemoved(true)
         })
     }
-    return (
+
+    return !removed?(
         <div className='single-post'>
             <div className='user-tag'>
                 {posterData.image?<img className='user-icon-small' src={posterData.image} alt='profile picture'  />: <img className='user-icon-small' src={userIcon} />}
@@ -53,8 +54,7 @@ function Post({data, id, removeFromFeed}) {
                 {toggle?<ImageModal {...data} toggle={toggleImageModal} />:null}
             </Portal>
             </div>
-            
-    )
+        ):<div className='single-post'>this post has been removed...</div>
 }
 
 const mapStateToProps = state =>({

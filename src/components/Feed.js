@@ -9,7 +9,6 @@ import Post from './subComponents/Post'
 function Feed(props) {
     const [offset, setOffset] = useState(0)
     useEffect(()=>{
-      console.log(offset)
         if(!localStorage.getItem('token')){
           props.history.push('/')
         }

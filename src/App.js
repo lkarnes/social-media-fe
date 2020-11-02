@@ -7,6 +7,7 @@ import Feed from './components/Feed';
 import Profile from './components/Profile'
 import MyProfile from './components/MyProfile'
 function App() {
+  
   return (
     <div id='App'>
       <Header/>
