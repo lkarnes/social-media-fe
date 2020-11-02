@@ -18,7 +18,7 @@ function Profile(props) {
                 setPosts(res.data.reverse())
             })
         })   
-    },[])
+    },[props])
     
    return (
         <div className='profile'>

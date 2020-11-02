@@ -8,7 +8,7 @@ export const initialState = {
         profile_picture: null
     },
     feedArray: [],
-    friendList: [],
+    friendList: null,
     likes: []
 
 }
