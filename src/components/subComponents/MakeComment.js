@@ -13,7 +13,10 @@ function MakeComment(props){
     }
     const handleSubmit = e => {
         e.preventDefault()
-        axiosWithAuth().post('/comments/add', comment).then(res => {         
+        axiosWithAuth().post('/comments/add', comment).then(res => {
+            comment.first_name = props.userData.first_name
+            comment.last_name = props.userData.last_name
+            comment.image = props.userData.image
             props.postState.setData({...props.postState.data, comments: [...props.postState.data.comments, comment]})
         })
         setComment({
@@ -31,7 +34,8 @@ function MakeComment(props){
 }
 
 const mapStateToProps = state => ({
-    user_id: state.userData.id
+    user_id: state.userData.id,
+    userData: state.userData
 })
 
 export default connect (mapStateToProps)(MakeComment)

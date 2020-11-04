@@ -14,7 +14,7 @@ function PostFooter(props){
         axiosWithAuth().get(`/comments/${props.data.id}`).then(res => {
             setData({...data, comments: res.data})
         })
-
+        console.log(data.comments)
         if(props.likes.includes(props.data.id)){
             setLikeToggle(true)
         }
