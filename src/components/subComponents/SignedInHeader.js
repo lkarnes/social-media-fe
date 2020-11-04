@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
-import menu from '../../images/menu.png';
+import menu from '../../images/menu-dark.png';
 import SearchBar from '../SearchBar';
 import Logo3 from '../../images/logo-3.png'
 
@@ -29,13 +29,17 @@ function SignedInHeader(props) {
         </div>
         <SearchBar/>
         <div className='Navigation'>
-            <img className='NavIcon' src={menu} onClick={toggleDrop} alt=''/>
+            <div className='user-card' onClick={toggleDrop}>
+                <img className='user-icon-xsmall' src={props.userData.image}  alt=''/>
+                <p>{props.userData.first_name} {props.userData.last_name}</p>
+                <img className='menu' src={menu} alt='dropdown'/>
+            </div>
             <div id='dropdown1' className='NavDropDown'>
-    <p>{props.userData.first_name} {props.userData.last_name}</p>
                 <Link className='link' to='/' onClick={toggleDrop}>Home</Link>
                 <Link className='link' to='/myprofile' onClick={toggleDrop} >Profile</Link>
                 <Link className='link' onClick={handleLogout} to='/'>Logout</Link>
             </div>
+
         </div>
     </div>
     )
