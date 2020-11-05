@@ -6,14 +6,18 @@ function MyProfileHeader(props){
     return (
         <>
             <div className='profile-header'>
-                <img className='user-icon-large' src={props.userData.image?props.userData.image: Icon} alt={`${props.userData.first_name}s profile`} />
+                <img className='user-icon-large profile-picture' src={props.userData.image?props.userData.image: Icon} alt={`${props.userData.first_name}s profile`} />
                 <div className='user-data'>
                     <h5>{props.userData.first_name} {props.userData.last_name} aka {props.userData.username}</h5>
                     <p>email: {props.userData.email}</p>
-                    <button onClick={props.toggleFriendList}>Friends</button>
-                    <button onClick={props.toggleLikes}>Likes</button>
-                    <button onClick={props.toggleEdit}>Edit</button>
+                    
+                    
                 </div> 
+                <div className='profile-button-menu'>
+                    <button className='button-1 friends' onClick={props.toggleFriendList}>Friends</button>
+                    <button  className='button-1 likes' onClick={props.toggleLikes}>Likes</button>
+                    <button className='edit button-2' onClick={props.toggleEdit}>Edit</button>
+                </div>
             </div>
         </>
     )

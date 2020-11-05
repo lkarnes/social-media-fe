@@ -7,6 +7,9 @@
     align-items: flex-start;
     margin: 10px auto;
     box-shadow: 1px 1px 5px rgb(168, 168, 168);
+    @media(max-width: $mobile){
+        width:95%;
+    }
     .user-tag{
         background: $secondary;
         width: 100%;
