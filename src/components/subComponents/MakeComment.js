@@ -17,6 +17,7 @@ function MakeComment(props){
             comment.first_name = props.userData.first_name
             comment.last_name = props.userData.last_name
             comment.image = props.userData.image
+            console.log(res)
             props.postState.setData({...props.postState.data, comments: [...props.postState.data.comments, comment]})
         })
         setComment({

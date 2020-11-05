@@ -5,6 +5,9 @@
     padding-top: 30px;
     .left-panel{
         width: 20%;
+        @media(max-width: 1000px){
+            display: none;
+        }
     }
     .main-feed {
         background: $foreground;
@@ -12,8 +15,15 @@
         width: 60%;
         min-height: 100vh;
         box-shadow: 0px 3px 5px rgb(168, 168, 168);
+        @media(max-width: $mobile){
+            width: 90%;
+            margin: 0 auto;
+        }
     }
     .right-panel{
         width: 20%;
+        @media(max-width: $mobile){
+        display: none;
+        }
     }
 }
