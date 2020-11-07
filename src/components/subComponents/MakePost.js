@@ -66,6 +66,7 @@ function MakePost(props){
     
     return (
         <div className='make-post'>
+            <ImagePreview/>
                 <h4>Create a Post</h4>
             <form onSubmit={handleSubmit} ref={formElement} >
                 <p className='error' id='max-length' style={{'display':'none'}}>The body is at max length</p>
@@ -78,10 +79,10 @@ function MakePost(props){
                     handleUpload(e)
                     handleChange(e)
                     }}/>    
-                <button className='upload-button' onClick={handleSelect}>Add a Image</button>
-                <button className='submit-button' type='submit' onClick={handleSubmit}>Post</button>
+                <button className='button-2' onClick={handleSelect}>Add a Image</button>
+                <button className='button-1' type='submit' onClick={handleSubmit}>Post</button>
             </form>
-            <ImagePreview/>
+            
         </div>
     )
 }
