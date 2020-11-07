@@ -39,9 +39,7 @@ function Feed(props) {
           <div className='main-feed'>
             <MakePost />
             {props.feedArray.length === 0 ? <div>No Post Found...</div> :props.feedArray.map(post => (
-              <div>
-                <Post key={post.id} data={{...post}} />
-              </div>
+                <Post key={`${post.id}`} data={{...post}} />
             ))}
             {props.feedArray.length > 0 ? <button onClick={handleLoadMore}>Load More</button> : null}
           </div>

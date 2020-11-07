@@ -13,6 +13,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 h1,h2,h3,h4,h5 {
   color: $primary-color;
 }
@@ -213,4 +218,12 @@ button {
   &:hover{
     color: $third-color
   }
+}
+
+.error-message {
+  border: 1px solid $button2;
+  border-radius: 5px;
+  background: #f8e7e7;
+  color: $button2;
+  font-size: 15px;
 }

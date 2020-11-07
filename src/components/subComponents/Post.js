@@ -16,6 +16,8 @@ function Post({data, id, removeFromFeed}) {
     const [posterData, setPosterData] = useState({})
     let date = new Date(data.created_at)
     useEffect(()=> {
+        console.log(id, data.poster_id)
+        setPosterData({})
         axiosWithAuth().get(`/friends/${data.poster_id}`).then(res => {
             setPosterData(res.data)
         })
@@ -42,7 +44,7 @@ function Post({data, id, removeFromFeed}) {
                 {posterData.image?<img className='user-icon-small' src={posterData.image} alt='profile picture'  />: <img className='user-icon-small' src={userIcon} />}
                 <p className='username'>{posterData.username}</p>
                 <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
-                {id === data.poster_id?<button onClick={handleDelete}>X</button>: null}
+                {id === parseInt(data.poster_id)?<button onClick={handleDelete}>X</button>: null}
             </div>
             <div className='post-data'>
                 <p className='title'>{data.header}</p>

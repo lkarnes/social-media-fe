@@ -1,14 +1,19 @@
 .image-preview{
     display: flex;
+    width: 100%;
     .photo-upload{
         border: 1px solid $primary;
         margin: 0 auto;
         max-width: 300px;
         max-height: 250px;
         object-fit: scale-down;
+        @media(max-width: $mobile){
+            max-width: 100%;
+            max-height: 200px;
+        }
     }
     .delete-button{
-        padding: 5px;
+        margin: 5px;
         width: 20px;
         height: 20px;
     }
