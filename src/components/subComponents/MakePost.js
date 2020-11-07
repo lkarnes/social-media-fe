@@ -85,8 +85,7 @@ function MakePost(props){
             <ImagePreview formElement={formElement}/>
                 <h4>Create a Post</h4>
             <form onSubmit={handleSubmit} ref={formElement} >
-                <p ref={errorBox} className='error-message' style={{}}></p>
-                <p className='error' id='max-length' style={{'display':'none'}}>The body is at max length</p>
+                <p ref={errorBox} className='error-message' style={{display: 'none'}}></p>
                 <input id='title' placeholder='Title(Optional)' type='text' name='header' />
                 <textarea id='textarea' rows='2' placeholder='Body(Required)' name='body' onChange={adjustHeight}/>
                 <input id='file-input' type='file' name='image' style={{display:'none'}} accept="image/*" onChange={handleUpload}/>    

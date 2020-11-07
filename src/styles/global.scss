@@ -219,3 +219,11 @@ button {
     color: $third-color
   }
 }
+
+.error-message {
+  border: 1px solid $button2;
+  border-radius: 5px;
+  background: #f8e7e7;
+  color: $button2;
+  font-size: 15px;
+}
