@@ -3,7 +3,11 @@ import Delete from '../../images/delete.png';
 
 export default function ImagePreview(props){
     const handleDelete = e => {
-        
+        const photoBox = document.getElementById('photo-box')
+        const image = document.getElementById('added-photo')
+        photoBox.style.display = 'none';
+        image.src = '#';
+        props.formElement.current.image.value = ''
     }
     return (
         <div id='photo-box' style={{display:'none'}} className='image-preview'>
