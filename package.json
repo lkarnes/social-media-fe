@@ -16,13 +16,11 @@
     "react-router-dom": "^5.2.0",
     "react-router-redux": "^4.0.8",
     "react-scripts": "3.4.1",
-    "redux": "^4.0.5",
-    "serve": "^11.3.2"
+    "redux": "^4.0.5"
   },
   "scripts": {
     "heroku-postbuild": "npm run build",
-    "start": "serve -s start",
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
