@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
-import SignUp from './subComponents/SignUp'
-import SignIn from './subComponents/SignIn'
+import SignUp from './subComponents/SignUp.js'
+import SignIn from './subComponents/SignIn.js'
 import stockPhoto from '../images/women-on-computer.jpg'
 export default function Home(props){
     useEffect(() =>{
