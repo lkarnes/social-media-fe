@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
-import axiosWithAuth from '../functions/axiosWithAuth';
+import axiosWithAuth from '../../functions/axiosWithAuth';
 
-import Post from './subComponents/Post';
-import UserIcon from '../images/user-icon.png';
-import MyProfileHeader from './subComponents/MyProfileHeader';
-import FriendList from './subComponents/FriendList';
-import Portal from './Portal';
-import MakePost from './subComponents/MakePost';
-import Likes from './subComponents/Likes';
-import EditProfile from './subComponents/EditProfile';
+import Post from '../feed/Post';
+import UserIcon from '../../images/user-icon.png';
+import MyProfileHeader from './MyProfileHeader';
+import FriendList from './FriendList';
+import Portal from '../misc/Portal';
+import MakePost from '../feed/MakePost';
+import Likes from './Likes';
+import EditProfile from './EditProfile';
 
-import { fillFeed } from '../redux/actions';
+import { fillFeed } from '../../redux/actions';
 
 function Profile(props) {
     const [posts, setPosts] = useState([]);
@@ -38,7 +38,7 @@ function Profile(props) {
             });
         };
         
-    }, []);
+    }, [props.userData.id]);
     if (props.userData.id){
        return (
             <>
@@ -63,7 +63,7 @@ function Profile(props) {
                 <div className='profile-header'>
                     <img className='user-icon-large' src={UserIcon} alt={`profile`} />
                     <div className='user-data'>
-                        <h5></h5>
+                        <h5>loading...</h5>
                         <p></p>
                     </div> 
                 </div>

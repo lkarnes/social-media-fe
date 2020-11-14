@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import  {useEffect} from 'react';
 import ReactDOM from 'react-dom'
 
 
 
 
-function Portal(props){
+export default function Portal(props){
     var portalRoot = document.getElementById('portal')
     var el = document.createElement('div')
 
@@ -20,4 +20,3 @@ function Portal(props){
 }
 
 
-export default Portal

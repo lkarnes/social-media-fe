@@ -1,9 +1,7 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import { connect } from 'react-redux'
-import axiosWithAuth from '../functions/axiosWithAuth'
+import axiosWithAuth from '../../functions/axiosWithAuth'
 import { useHistory } from "react-router-dom";
-
-import Search from '../images/search.png'
 
 function SearchBar(props) {
     const history = useHistory()

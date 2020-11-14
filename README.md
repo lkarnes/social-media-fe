@@ -13,9 +13,6 @@ social-1 is a social media app I have started to work on to get an understanding
 - axios
 - cloudinary(for media storage)
 ### considerations  
-- Oauth
-- recoil https://recoiljs.org/
-- graphql
 - webrtc https://webrtc.org/
 
 ## Back-End
@@ -26,5 +23,4 @@ social-1 is a social media app I have started to work on to get an understanding
 - knex
 - postgres
 - SQL
-### considerations
-- graphql
+

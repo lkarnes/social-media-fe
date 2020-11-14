@@ -1,11 +1,11 @@
 import React from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
-import Home from './components/Home'
-import Header from './components/Header'
-import Feed from './components/Feed';
-import Profile from './components/Profile'
-import MyProfile from './components/MyProfile'
+import Home from './components/home/Home'
+import Header from './components/header/Header'
+import Feed from './components/feed/Feed';
+import Profile from './components/profile/Profile'
+import MyProfile from './components/profile/MyProfile'
 function App() {
   
   return (
