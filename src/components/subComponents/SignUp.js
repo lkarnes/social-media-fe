@@ -51,37 +51,37 @@ function SignUp(props){
             <h5 className=''>Sign Up</h5>
             <form ref={formElement} onSubmit={handleSubmit}>
                 <div className='image-input'>
-                    <p>profile picture</p>
+                    <p>Profile Picture</p>
                     <img id='profile-picture'  src={Icon} width='60px' alt='profile'/>  
                     <input id='file-input' type='file' name='image' style={{display: 'none'}} onChange={handleUpload}/>
                     <button className='upload-button' onClick={handleSelect}>Add a Image</button>
                 </div>
                 <div className='input-box'>
                     <p ref={usernameError} style={{display: 'none'}}>username already taken</p>
-                    <p>username</p>
+                    <p>Username</p>
                     <input className='input' type='text' name='username'/>
                 </div>
                 <div className='input-box'>
-                    <p>password</p>                    
+                    <p>Password</p>                    
                     <input className='input' type='password' name='password'/>
                 </div>
                 <div className='input-box'>
                     <div className='confirm-password'>
-                        <p>confirm password</p>
+                        <p>Confirm Password</p>
                         <span id='light' className='confirm'></span>
                     </div>
                     <input className='input' type='password' name='confirm-password' onChange={handleConfirm}/>
                 </div>
                 <div className='input-box'>
-                    <p>first name</p>
+                    <p>First Name</p>
                     <input className='input' type='text' name='first_name'/>
                 </div>
                 <div className='input-box'>
-                    <p>last name</p>
+                    <p>Last Name</p>
                     <input className='input' type='text' name='last_name'/>
                 </div>
                 <div className='input-box'>
-                    <p>email</p>
+                    <p>Email</p>
                     <input className='input' type='email' name='email'/>
                 </div>
                 <button className='button-1 submit' type='submit'>Submit</button>

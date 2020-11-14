@@ -24,11 +24,11 @@ function SignIn(props){
             <h5 className=''>Sign In</h5>
             <form onSubmit={handleSubmit}>
                 <div className='input-box'>
-                    <p>username</p>
+                    <p>Username</p>
                     <input className='input' name='username' value={data.username} onChange={handleChange}/>
                 </div>
                 <div  className='input-box' >
-                    <p>password</p>
+                    <p>Password</p>
                     <input className='input' type='password' name='password' value={data.password} onChange={handleChange}/>
                 </div>
                 <button className='button-1 submit' type='submit'>Submit</button>
