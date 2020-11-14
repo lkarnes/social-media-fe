@@ -3,7 +3,7 @@ import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Home from './components/Home'
 import Header from './components/header/Header'
-import Feed from './components/Feed';
+import Feed from './components/feed/Feed';
 import Profile from './components/profile/Profile'
 import MyProfile from './components/profile/MyProfile'
 function App() {

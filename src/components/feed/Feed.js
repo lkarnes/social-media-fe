@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react'
-import axiosWithAuth from '../functions/axiosWithAuth'
-import MakePost from './subComponents/MakePost'
+import axiosWithAuth from '../../functions/axiosWithAuth'
+import MakePost from './MakePost'
 import {connect} from 'react-redux'
-import {fillFeed, addPost, addToFeed} from '../redux/actions'
+import {fillFeed, addPost, addToFeed} from '../../redux/actions'
 
-import Post from './subComponents/Post'
+import Post from './Post'
 
 function Feed(props) {
     const [offset, setOffset] = useState(0)

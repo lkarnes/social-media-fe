@@ -21,9 +21,6 @@ function Header(props) {
                     })).then(response => {
                         props.getFriends(response.map(obj => {return obj.data}))
                     })
-                    //adds data to store
-                    // console.log(response)
-                    // props.getFriends(response)
                 })
             }).catch(err => {
                 console.log({err})

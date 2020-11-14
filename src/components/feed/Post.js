@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
 import axiosWithAuth from '../../functions/axiosWithAuth';
-import ImageModal from './ImageModal';
+import ImageModal from '../subComponents/ImageModal';
 import Portal from '../Portal';
 import PostFooter from './PostFooter';
 

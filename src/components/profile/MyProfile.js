@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
 import axiosWithAuth from '../../functions/axiosWithAuth';
 
-import Post from '../subComponents/Post';
+import Post from '../feed/Post';
 import UserIcon from '../../images/user-icon.png';
 import MyProfileHeader from './MyProfileHeader';
 import FriendList from '../subComponents/FriendList';
 import Portal from '../Portal';
-import MakePost from '../subComponents/MakePost';
-import Likes from '../subComponents/Likes';
+import MakePost from '../feed/MakePost';
+import Likes from './Likes';
 import EditProfile from './EditProfile';
 
 import { fillFeed } from '../../redux/actions';

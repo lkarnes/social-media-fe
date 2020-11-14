@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
 import axiosWithAuth from '../../functions/axiosWithAuth';
-import Post from '../subComponents/Post';
+import Post from '../feed/Post';
 import FriendButton from './FriendButton';
 import UserIcon from '../../images/user-icon.png';
 
