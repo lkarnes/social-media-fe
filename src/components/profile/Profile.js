@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import {connect} from 'react-redux';
-import axiosWithAuth from '../functions/axiosWithAuth';
-import Post from './subComponents/Post';
-import FriendButton from './subComponents/FriendButton';
-import UserIcon from '../images/user-icon.png';
+import axiosWithAuth from '../../functions/axiosWithAuth';
+import Post from '../subComponents/Post';
+import FriendButton from './FriendButton';
+import UserIcon from '../../images/user-icon.png';
 
-import { addFriend, removeFriend } from '../redux/actions';
+import { addFriend, removeFriend } from '../../redux/actions';
 
 function Profile(props) {
     const [data,setData] = useState({})

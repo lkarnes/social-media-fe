@@ -4,8 +4,8 @@ import {connect} from 'react-redux';
 import Home from './components/Home'
 import Header from './components/Header'
 import Feed from './components/Feed';
-import Profile from './components/Profile'
-import MyProfile from './components/MyProfile'
+import Profile from './components/profile/Profile'
+import MyProfile from './components/profile/MyProfile'
 function App() {
   
   return (
