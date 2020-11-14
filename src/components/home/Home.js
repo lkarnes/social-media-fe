@@ -1,8 +1,7 @@
 import React, {useEffect} from 'react'
-import SignUp from './subComponents/SignUp.js'
-import SignIn from './subComponents/SignIn.js'
-import stockPhoto from '../images/women-on-computer.jpg';
-import Logo3 from '../images/logo-3.png';
+import SignUp from './SignUp.js'
+import SignIn from './SignIn.js'
+import Logo3 from '../../images/logo-3.png';
 export default function Home(props){
     useEffect(() =>{
         if(localStorage.getItem('token')){

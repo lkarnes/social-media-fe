@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import {connect} from 'react-redux'
 import {Link} from 'react-router-dom';
 import menu from '../../images/menu-dark.png';
-import SearchBar from '../SearchBar';
+import SearchBar from './SearchBar';
 import Logo3 from '../../images/logo-3.png'
 
 function SignedInHeader(props) {
