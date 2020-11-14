@@ -9,6 +9,7 @@ import PostFooter from './PostFooter';
 import {removeFromFeed} from '../../redux/actions'
 
 import userIcon from '../../images/user-icon.png';
+import deleteButton from '../../images/delete.png';
 
 function Post({data, id, removeFromFeed}) {
     const [toggle, setToggle] = useState(false)
@@ -44,7 +45,7 @@ function Post({data, id, removeFromFeed}) {
                 {posterData.image?<img className='user-icon-small' src={posterData.image} alt='profile picture'  />: <img className='user-icon-small' src={userIcon} />}
                 <p className='username'>{posterData.username}</p>
                 <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
-                {id === parseInt(data.poster_id)?<button onClick={handleDelete}>X</button>: null}
+                {id === parseInt(data.poster_id)?<img src={deleteButton} className='delete-button' onClick={handleDelete}/>: null}
             </div>
             <div className='post-data'>
                 <p className='title'>{data.header}</p>

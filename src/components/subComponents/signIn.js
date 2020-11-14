@@ -24,13 +24,13 @@ function SignIn(props){
             <form onSubmit={handleSubmit}>
                 <div className='input-box'>
                     <p>username</p>
-                    <input name='username' value={data.username} onChange={handleChange}/>
+                    <input className='input' name='username' value={data.username} onChange={handleChange}/>
                 </div>
                 <div  className='input-box' >
                     <p>password</p>
-                    <input type='password' name='password' value={data.password} onChange={handleChange}/>
+                    <input className='input' type='password' name='password' value={data.password} onChange={handleChange}/>
                 </div>
-                <button>Submit</button>
+                <button className='button-1 submit' type='submit'>Submit</button>
                 
             </form>
         </div>

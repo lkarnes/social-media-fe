@@ -8,7 +8,7 @@
         width: 100%;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: flex-start;
     }
     #profile-picture{
         width: 60px;
@@ -29,8 +29,8 @@
             padding: 3px 0 5px 0;
         }
         .input{
-            border: 1px solid grey;
-            border-radius: 3px;
+            border: none;
+            width: 70%;
         }
         .confirm{
             width: 10px;
@@ -38,5 +38,9 @@
             border-radius: 50%;
             background: $button2
         }
+        
+    }
+    .submit {
+        margin: 5px;
     }
 }

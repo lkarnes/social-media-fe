@@ -6,7 +6,7 @@ function FriendList(props){
     return (
 
         <div className='modal-narrow'>
-            <button onClick={props.toggle}>X</button>
+            <button className='modal-exit' onClick={props.toggle}>X</button>
             <div className='friend-list'>
                 {props.friendList.length > 0 ? props.friendList.map(friend => (
                     <Link className='list-item' to={`/profile/${friend.id}`}>{friend.first_name} {friend.last_name} aka {friend.username}</Link>
