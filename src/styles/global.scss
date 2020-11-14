@@ -60,9 +60,6 @@ button {
     background: $button2;
   }
 }
-
-
-
 .user-icon-small {
   box-sizing: border-box;
   width: 40px;
@@ -160,28 +157,33 @@ button {
   background: $foreground;
   top: 50%;
   left: 50%;
-  width: 800px;
+  width: 700px;
   padding: 10px;
-  margin-top: -400px;
-  margin-left: -400px;
+  margin-top: -350px;
+  margin-left: -350px;
   box-shadow: 0px 0px 8px rgb(168, 168, 168);
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  @media (max-width: $mobile) {
+    width: 400px;
+    margin-top: -200px;
+    margin-left: -200px;
+  }
 }
 
 .modal-exit {
   width: 25px;
   height: 25px;
   position: fixed;
-  background: $third-color;
-  color: $button2;
   font-weight: 700;
   border: 1px solid $primary-color;
   border-radius: 0 50% 50% 50%;
   margin: -10px 0 0 -10px;
   &:hover {
-    background: $primary-color;
+    transition: ease-in-out .2s;
+    border: 2px solid $primary-color;
+    background: $foreground;
     
   }
 }

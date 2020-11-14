@@ -1,28 +1,49 @@
 .home {
     margin: 0 auto;
-    width: 70%;
+    width: 100%;
     min-height: 100vh;
-    border-left: 2px solid $foreground;
-    border-right: 2px solid $foreground;
     display: flex;
+    flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-around;
-    padding: 200px 0 0 0;
+    padding: 0;
+    @media (max-width: $mobile){
+        width: 100%;
+        align-items: center;
+        flex-direction: column;
+    }
+    .logo{
+        width: 40%;
+        background-image: url('../images/background.png');
+        background-size: cover;
+        padding: 100px 50% 30px 10%;
+    }
     .marketing-photo{
-        width: 43%;
+        width: 40%;
         border-radius: 10px;
-        border: 8px solid $primary;
+        border: 2px solid $primary;
+        @media (max-width: $mobile){
+           display: none;
+        }
     }
     .call-to-action{
-        width: 50%;
+        width: 70%;
         justify-content: space-evenly;
         display: flex;
         justify-content: space-evenly;
+        @media (max-width: $mobile) {
+            flex-direction: column-reverse;
+            width: 100%;
+        }
         .box{
             width: 50%;
             display:flex;
             justify-content: center;
-
+            @media (max-width: $mobile) {
+                width: 100%;
+                margin: 20px 0
+            }
         }
+        
     }
 }

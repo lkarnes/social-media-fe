@@ -9,15 +9,17 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        
         p{
             padding: 3px 0 5px 0;
         }
-        .input{
-            text-decoration: none;
-            width: 200px;
-            border: 1px solid grey;
-            border-radius: 3px;
-        }
+        
+    }
+    .input{
+        text-decoration: none;
+        width: 70%;
+        border: none;
+    }
+    .submit{
+        margin: 5px;
     }
 }

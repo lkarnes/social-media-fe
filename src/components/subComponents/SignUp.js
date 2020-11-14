@@ -84,7 +84,7 @@ function SignUp(props){
                     <p>email</p>
                     <input className='input' type='email' name='email'/>
                 </div>
-                <button type='submit'>Submit</button>
+                <button className='button-1 submit' type='submit'>Submit</button>
             </form>
         </div>
     )
