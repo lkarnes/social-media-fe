@@ -17,7 +17,6 @@ function Post({data, id, removeFromFeed}) {
     const [posterData, setPosterData] = useState({})
     let date = new Date(data.created_at)
     useEffect(()=> {
-        console.log(id, data.poster_id)
         setPosterData({})
         axiosWithAuth().get(`/friends/${data.poster_id}`).then(res => {
             setPosterData(res.data)

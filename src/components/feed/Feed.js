@@ -19,7 +19,7 @@ function Feed(props) {
           console.log({err})
         })
         }
-      }, [props.id])
+      }, [props])
 
       const handleLoadMore = () =>{
         setOffset(offset+15)

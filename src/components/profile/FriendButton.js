@@ -13,9 +13,8 @@ function FriendButton(props){
             }else{
                 setFriends(false)
             }
-        }
-        
-    })
+        }  
+    }, [setFriends, props.data.id, props.friendList])
     
     const handleAddFriend = () => {
         props.addFriend(props.data)

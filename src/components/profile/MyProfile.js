@@ -38,7 +38,7 @@ function Profile(props) {
             });
         };
         
-    }, []);
+    }, [props.userData.id]);
     if (props.userData.id){
        return (
             <>
@@ -63,7 +63,7 @@ function Profile(props) {
                 <div className='profile-header'>
                     <img className='user-icon-large' src={UserIcon} alt={`profile`} />
                     <div className='user-data'>
-                        <h5></h5>
+                        <h5>loading...</h5>
                         <p></p>
                     </div> 
                 </div>

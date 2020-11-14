@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import axiosWithAuth from '../../functions/axiosWithAuth';
 import {connect} from 'react-redux';
 import {addPost} from '../../redux/actions';

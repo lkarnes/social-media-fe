@@ -17,7 +17,7 @@ function PostFooter(props){
         if(props.likes.includes(props.data.id)){
             setLikeToggle(true)
         }
-    },[])
+    },[data, props.data.id, props.likes])
     const [commentsToggle, setCommentsToggle] = useState(false)
     const [likeToggle, setLikeToggle] = useState()
     

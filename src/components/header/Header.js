@@ -5,21 +5,21 @@ import jwt_decode from 'jwt-decode';
 import {connect} from 'react-redux';
 import {signIn, getFriends} from '../../redux/actions';
 
-function Header(props) {
+function Header({friend_list, getFriends, signIn, userData}) {
     useEffect(()=>{
-        if(localStorage.getItem('token') && props.userData.id === null){
+        if(localStorage.getItem('token') && userData.id === null){
             var token = localStorage.getItem('token')
             var decoded = jwt_decode(token)
             //gets user data from token
             axiosWithAuth().get(`/getData/${decoded.subject}`).then(res => {
-                props.signIn(res.data)
+                signIn(res.data)
                 //gets all friends
                 axiosWithAuth().get(`/friends/all/${res.data.id}`).then(friendArr => {
                     Promise.all(friendArr.data.map(friend => {
                         //gets data for friend
                         return axiosWithAuth().get(`/friends/${friend.friend_id}`)
                     })).then(response => {
-                        props.getFriends(response.map(obj => {return obj.data}))
+                        getFriends(response.map(obj => {return obj.data}))
                     })
                 })
             }).catch(err => {
@@ -28,8 +28,8 @@ function Header(props) {
             })
         }
         
-    },[props.id])
-    return props.userData.id === null ? null : (<SignedInHeader/>)
+    },[getFriends, signIn, userData.id])
+    return userData.id === null ? null : (<SignedInHeader/>)
 }
 
 const mapStateToProps= state =>({

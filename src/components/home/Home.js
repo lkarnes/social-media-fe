@@ -10,7 +10,7 @@ export default function Home(props){
     },[props])
     return (
         <div className='home'>
-            <img className ='logo' src={Logo3}/>
+            <img className ='logo' src={Logo3} alt='logo'/>
             <div className='call-to-action'>
                 
                 <div className='box'>

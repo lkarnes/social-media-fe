@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux'
 import Icon from '../../images/user-icon.png'
 
 function MyProfileHeader(props){

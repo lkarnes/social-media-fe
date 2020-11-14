@@ -17,12 +17,11 @@ function Post({data, id, removeFromFeed}) {
     const [posterData, setPosterData] = useState({})
     let date = new Date(data.created_at)
     useEffect(()=> {
-        console.log(id, data.poster_id)
         setPosterData({})
         axiosWithAuth().get(`/friends/${data.poster_id}`).then(res => {
             setPosterData(res.data)
         })
-    }, [])
+    }, [data.poster_id, id])
     const toggleImageModal = () => {
         const feed = document.getElementById('feed-box')
         if(toggle){
@@ -42,10 +41,10 @@ function Post({data, id, removeFromFeed}) {
     return !removed?(
         <div className='single-post'>
             <div className='user-tag'>
-                {posterData.image?<img className='user-icon-small' src={posterData.image} alt='profile picture'  />: <img className='user-icon-small' src={userIcon} />}
+                {posterData.image?<img className='user-icon-small' src={posterData.image} alt='icon'  />: <img className='user-icon-small' src={userIcon} alt='icon'/>}
                 <p className='username'>{posterData.username}</p>
                 <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
-                {id === parseInt(data.poster_id)?<img src={deleteButton} className='delete-button' onClick={handleDelete}/>: null}
+                {id === parseInt(data.poster_id)?<img src={deleteButton} className='delete-button' onClick={handleDelete} alt='delete'/>: null}
             </div>
             <div className='post-data'>
                 <p className='title'>{data.header}</p>
