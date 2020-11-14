@@ -2,7 +2,7 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 import Home from './components/Home'
-import Header from './components/Header'
+import Header from './components/header/Header'
 import Feed from './components/Feed';
 import Profile from './components/profile/Profile'
 import MyProfile from './components/profile/MyProfile'

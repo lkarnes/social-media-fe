@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import axiosWithAuth from '../functions/axiosWithAuth';
-import SignedInHeader from './subComponents/SignedInHeader';
+import axiosWithAuth from '../../functions/axiosWithAuth';
+import SignedInHeader from './SignedInHeader';
 import jwt_decode from 'jwt-decode';
 import {connect} from 'react-redux';
-import {signIn, getFriends} from '../redux/actions';
+import {signIn, getFriends} from '../../redux/actions';
 
 function Header(props) {
     useEffect(()=>{
