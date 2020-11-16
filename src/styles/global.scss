@@ -117,6 +117,18 @@ button {
     border: 1px solid $secondary-color;
   }
 }
+.button-3 {
+  min-width: 100px;
+  height: 20px;
+  border: none;
+  background: $button2;
+  color: $background;
+  font-weight: 500;
+  &:hover{
+    font-weight: 500;
+    border: 1px solid $secondary-color;
+  }
+}
 
 .modal-narrow {
   position: fixed;
