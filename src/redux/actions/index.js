@@ -60,3 +60,10 @@ export const addFriend = payload => {
         payload: payload
     }
 }
+
+export const loadLikes = payload => {
+    return {
+        type: 'LOAD_LIKES',
+        payload: payload
+    }
+}
