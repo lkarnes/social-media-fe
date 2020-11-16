@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
 import axiosWithAuth from '../../functions/axiosWithAuth';
+import history from '../../functions/history'
 import ImageModal from '../misc/ImageModal';
 import Portal from '../misc/Portal';
 import PostFooter from './PostFooter';
@@ -38,10 +39,15 @@ function Post({data, id, removeFromFeed}) {
         })
     }
 
+    const handleIconClick = () => {
+        history.push(`/profile/${data.poster_id}`)
+        window.location.reload()
+    }
+
     return !removed?(
         <div className='single-post'>
             <div className='user-tag'>
-                {posterData.image?<img className='user-icon-small' src={posterData.image} alt='icon'  />: <img className='user-icon-small' src={userIcon} alt='icon'/>}
+                {posterData.image?<img className='user-icon-small' src={posterData.image} alt='icon' onClick={handleIconClick}  />: <img className='user-icon-small' src={userIcon} alt='icon'/>}
                 <p className='username'>{posterData.username}</p>
                 <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
                 {id === parseInt(data.poster_id)?<img src={deleteButton} className='delete-button' onClick={handleDelete} alt='delete'/>: null}
