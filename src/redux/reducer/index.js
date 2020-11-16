@@ -70,6 +70,12 @@ switch(action.type) {
             ...state,
             likes: [action.payload, ...state.likes]
         }
+    case "LOAD_LIKES":
+        console.log(action.payload)
+        return {
+            ...state,
+            likes: [...action.payload]
+        }
     default:
         return state
 }
