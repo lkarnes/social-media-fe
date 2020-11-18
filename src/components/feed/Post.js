@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
 
 import axiosWithAuth from '../../functions/axiosWithAuth';
-import history from '../../functions/history';
 import {Link} from 'react-router-dom';
 import ImageModal from '../misc/ImageModal';
 import Portal from '../misc/Portal';
