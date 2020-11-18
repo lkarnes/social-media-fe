@@ -24,7 +24,7 @@ function SearchBar(props) {
     }
     return (
         <div className='search-box'>
-            <input className='search-bar' value={search} name='search' onChange={handleChange} placeholder='find some friends...' />
+            <input autocomplete='off' className='search-bar' value={search} name='search' onChange={handleChange} placeholder='find some friends...' />
             <div className='dropdown'>
                 {searchData !== []?
                     searchData.map(user => (
