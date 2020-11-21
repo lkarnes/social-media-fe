@@ -55,7 +55,7 @@ function Feed(props) {
 
 const mapStateToProps = state => ({
   id: state.userData.id,
-  feedArray: state.feedArray  
+  feedArray: state.feedArray, 
 })
 
 export default connect(mapStateToProps, {fillFeed, addPost, addToFeed})(Feed)

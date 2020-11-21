@@ -9,7 +9,7 @@ export const initialState = {
     },
     feedArray: [],
     friendList: null,
-    likes: []
+    likes: null
 
 }
 

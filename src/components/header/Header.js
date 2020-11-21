@@ -3,9 +3,9 @@ import axiosWithAuth from '../../functions/axiosWithAuth';
 import SignedInHeader from './SignedInHeader';
 import jwt_decode from 'jwt-decode';
 import {connect} from 'react-redux';
-import {signIn, getFriends} from '../../redux/actions';
+import {signIn, getFriends, loadLikes} from '../../redux/actions';
 
-function Header({friend_list, getFriends, signIn, userData}) {
+function Header({friend_list, getFriends, signIn, userData, loadLikes}) {
     useEffect(()=>{
         if(localStorage.getItem('token') && userData.id === null){
             var token = localStorage.getItem('token')
@@ -26,6 +26,9 @@ function Header({friend_list, getFriends, signIn, userData}) {
                 console.log({err})
                 localStorage.removeItem('token')
             })
+            axiosWithAuth().get(`/likes/posts/${decoded.subject}`).then(res => {
+                loadLikes(res.data)
+            }).catch(err => console.log({err}))
         }
         
     },[getFriends, signIn, userData.id])
@@ -34,7 +37,8 @@ function Header({friend_list, getFriends, signIn, userData}) {
 
 const mapStateToProps= state =>({
     userData: state.userData,
-    friend_list: state.friend_list
+    friend_list: state.friend_list,
+    likes: state.likes,
 })
 
-export default connect(mapStateToProps, {signIn, getFriends})(Header)
+export default connect(mapStateToProps, {signIn, getFriends, loadLikes})(Header)
