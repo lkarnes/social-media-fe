@@ -14,10 +14,12 @@ function MakeComment(props){
     const handleSubmit = e => {
         e.preventDefault()
         axiosWithAuth().post('/comments/add', comment).then(res => {
-            comment.first_name = props.userData.first_name
-            comment.last_name = props.userData.last_name
-            comment.image = props.userData.image
-            console.log(res)
+            comment.first_name = props.userData.first_name;
+            comment.last_name = props.userData.last_name;
+            comment.username = props.userData.username;
+            comment.image = props.userData.image;
+            comment.id = res.data;
+            console.log(res);
             props.postState.setData({...props.postState.data, comments: [...props.postState.data.comments, comment]})
         })
         setComment({
