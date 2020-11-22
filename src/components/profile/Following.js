@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 
 function Following(props){
     return (
-
         <div className='modal-narrow'>
             <button className='modal-exit' onClick={props.toggle}>X</button>
             <div className='friend-list'>

@@ -5,17 +5,19 @@ import axiosWithAuth from '../../functions/axiosWithAuth';
 import Post from '../feed/Post';
 import UserIcon from '../../images/user-icon.png';
 import MyProfileHeader from './MyProfileHeader';
-import FriendList from './Following';
+import Following from './Following';
 import Portal from '../misc/Portal';
 import MakePost from '../feed/MakePost';
 import Likes from './Likes';
 import EditProfile from './EditProfile';
+import Followers from './Followers';
 
 import { fillFeed } from '../../redux/actions';
 
 function Profile(props) {
     const [posts, setPosts] = useState([]);
     const [followingModal, setFollowingModal] = useState(false);
+    const [followerModal, setFollowerModal] = useState(false);
     const [likes, setLikes] = useState(false);
     const [edit, setEdit] = useState(false);
     const toggleLikes = () => setLikes(!likes);
@@ -31,7 +33,13 @@ function Profile(props) {
         }
     };
     const toggleFollowers = () => {
-
+        const profile = document.getElementById('profile');
+        if(followerModal){
+            profile.classList.remove('blur');
+        }else{
+            profile.classList.add('blur');
+        }
+        setFollowerModal(!followerModal)
     }
     useEffect(()=>{
         if (props.userData.id){
@@ -45,7 +53,7 @@ function Profile(props) {
        return (
             <>
                 <div id='profile'>
-                {edit?<EditProfile {...props} toggleEdit={toggleEdit}/>:<MyProfileHeader {...props} toggleFollowing={toggleFollowing} toggleLikes={toggleLikes} toggleEdit={toggleEdit}/>}
+                {edit?<EditProfile {...props} toggleEdit={toggleEdit}/>:<MyProfileHeader {...props} toggleFollowing={toggleFollowing} toggleFollowers={toggleFollowers} toggleLikes={toggleLikes} toggleEdit={toggleEdit}/>}
                 <div className='post-box'>
                     {likes ? <Likes/>:null}
                     <MakePost/>
@@ -55,7 +63,8 @@ function Profile(props) {
                 </div>
             </div>
                 <Portal>
-                    {followingModal ? <FriendList toggle={toggleFollowing}/>: null}
+                    {followingModal ? <Following toggle={toggleFollowing}/>: null}
+                    {followerModal ? <Followers toggle={toggleFollowers}/>: null}
                 </Portal>
             </>
     ) 
