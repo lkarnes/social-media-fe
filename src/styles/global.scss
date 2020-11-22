@@ -92,12 +92,12 @@ button {
   }
 }
 .button-1{
-  min-width: 100px;
+  min-width: 90px;
   height: 20px;
-  border: none;
   background: $button1;
   color: $secondary-color;
   font-weight: 500;
+  border: 1px solid transparent;
   &:hover{
     color: $primary-color;
     font-weight: 500;
@@ -106,9 +106,9 @@ button {
 }
 
 .button-2 {
-  min-width: 100px;
+  min-width: 90px;
   height: 20px;
-  border: none;
+  border: 1px solid transparent;
   background: $primary;
   color: $primary-color;
   font-weight: 500;

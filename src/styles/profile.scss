@@ -57,12 +57,10 @@
         grid-template-columns: 120px 120px 120px auto 120px;
         @media(max-width: $mobile){
             padding: 0;
-            grid-template-columns: auto 33% 33% 33% auto;
+            grid-template-columns: auto 25% 25% 25% 25% auto;
         }
-        button {
-            margin: 0 5px;
-        }
-            .friends{
+        
+            .following{
                 grid-column-start: 1;
                 grid-column-end: 2;
                 @media(max-width: $mobile){
@@ -70,7 +68,8 @@
                     grid-column-end: 3;
                 }
             }
-            .likes {
+
+            .followers {
                 grid-column-start: 2;
                 grid-column-end: 3;
                 @media(max-width: $mobile){
@@ -78,12 +77,20 @@
                     grid-column-end: 4;
                 }
             }
+            .likes {
+                grid-column-start: 3;
+                grid-column-end: 4;
+                @media(max-width: $mobile){
+                    grid-column-start: 4;
+                    grid-column-end: 5;
+                } 
+            }
             .edit {
                 grid-column-start: 5;
                 grid-column-end: 6;
                 @media(max-width: $mobile){
-                    grid-column-start: 4;
-                    grid-column-end: 5; 
+                    grid-column-start: 5;
+                    grid-column-end: 6; 
                 }
             }
 

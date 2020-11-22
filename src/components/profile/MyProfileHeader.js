@@ -13,7 +13,8 @@ function MyProfileHeader(props){
                     
                 </div> 
                 <div className='profile-button-menu'>
-                    <button className='button-1 friends' onClick={props.toggleFriendList}>Friends</button>
+                    <button className='button-1 following' onClick={props.toggleFollowing}>Following</button>
+                    <button className='button-2 followers' onClick={props.toggleFollowers}>Followers</button>
                     <button  className='button-1 likes' onClick={props.toggleLikes}>Likes</button>
                     <button className='edit button-2' onClick={props.toggleEdit}>Edit</button>
                 </div>
