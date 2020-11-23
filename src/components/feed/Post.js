@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {connect} from 'react-redux';
-
+import {useHistory} from 'react-router-dom';
 import axiosWithAuth from '../../functions/axiosWithAuth';
 import {Link} from 'react-router-dom';
 import ImageModal from '../misc/ImageModal';
@@ -16,6 +16,7 @@ function Post({data, id, removeFromFeed}) {
     const [toggle, setToggle] = useState(false)
     const [removed, setRemoved] = useState(false)
     const [posterData, setPosterData] = useState({})
+    const history = useHistory();
     let date = new Date(data.created_at)
     useEffect(()=> {
         setPosterData({})
@@ -24,13 +25,27 @@ function Post({data, id, removeFromFeed}) {
         })
     }, [data.poster_id, id])
     const toggleImageModal = () => {
-        const feed = document.getElementById('feed-box')
-        if(toggle){
-            feed.classList.remove('blur')
-        }else{
-            feed.classList.add('blur')
+        if(history.location.pathname === '/feed'){
+            const feed = document.getElementById('feed-box')
+            if(toggle){
+                setToggle(!toggle)
+                feed.classList.remove('blur')
+            }else{
+                feed.classList.add('blur')
+                setToggle(!toggle)
+            }
+        }else {
+            const profile = document.getElementById('profile')
+            if(toggle){
+                setToggle(!toggle)
+                profile.classList.remove('blur')
+            }else{
+                profile.classList.add('blur')
+                setToggle(!toggle)
+            }
         }
-        setToggle(!toggle)
+        
+        
     }
     const handleDelete = () => {
         axiosWithAuth().delete(`/posts/remove/${data.id}`).then(res => {

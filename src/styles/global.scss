@@ -170,7 +170,7 @@ button {
   z-index: 2;
   position: fixed;
   background: $foreground;
-  top: 50%;
+  top: 55%;
   left: 50%;
   width: 700px;
   padding: 10px;
@@ -193,7 +193,7 @@ button {
   position: fixed;
   font-weight: 700;
   border: 1px solid $primary-color;
-  border-radius: 0 50% 50% 50%;
+  border-radius: 50%;
   margin: -10px 0 0 -10px;
   &:hover {
     transition: ease-in-out .2s;

@@ -35,11 +35,13 @@ function Profile(props) {
     const toggleFollowers = () => {
         const profile = document.getElementById('profile');
         if(followerModal){
+            setFollowerModal(!followerModal)
             profile.classList.remove('blur');
         }else{
+            setFollowerModal(!followerModal)
             profile.classList.add('blur');
         }
-        setFollowerModal(!followerModal)
+        
     }
     useEffect(()=>{
         if (props.userData.id){
