@@ -2,13 +2,21 @@ import React,{useEffect, useState} from 'react';
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux';
 import axiosWithAuth from '../../functions/axiosWithAuth';
+import SmallUserCard from '../misc/SmallUserCard';
 
 function Followers(props){
     const [followers, setFollowers] = useState([])
 
     useEffect(()=>{
-        axiosWithAuth().get(``).then(res => {
-            console.log(res)
+        axiosWithAuth().get(`/friends/all/followers/${props.userData.id}`).then(res => {
+            var array = Promise.all(res.data.map(user =>{
+                return axiosWithAuth().get(`/friends/${user.user_id}`).then(data => {
+                    return data.data
+                })
+            }))
+            array.then(res => {
+                setFollowers(res)
+            })
         })
     },[])
     return (
@@ -17,7 +25,7 @@ function Followers(props){
             <button className='modal-exit' onClick={props.toggle}>X</button>
             <div>
                 {followers.map(user => (
-                    <p>{user.username}</p>
+                    <SmallUserCard user={user}/>
                 ))}
             </div>
         </div>
