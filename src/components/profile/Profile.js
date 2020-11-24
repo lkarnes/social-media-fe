@@ -30,7 +30,7 @@ function Profile(props) {
                 <img className='user-icon-large profile-picture' src={data.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
                 
                 <div className='profile-button-menu'>
-                    <UserStats id={props.id} LikeToggle={toggleLikes}/>
+                    <UserStats id={props.match.params.id} LikeToggle={toggleLikes}/>
                 </div>
                 <div className='user-data'>
                     <h5>{data.first_name} {data.last_name} aka {data.username}</h5>

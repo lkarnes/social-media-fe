@@ -43,8 +43,8 @@ export default function UserStats(props) {
             </div>
 
             <Portal>
-                {followingToggle?<Following data={following} toggle={handleFollowingExit}/>: null}
-                {followerToggle?<Followers data={followers} toggle={handleFollowerExit}/>: null}
+                {followingToggle?<Following data={following} id={props.id} toggle={handleFollowingExit}/>: null}
+                {followerToggle?<Followers data={followers} id={props.id} toggle={handleFollowerExit}/>: null}
             </Portal>
         </div>
     )
