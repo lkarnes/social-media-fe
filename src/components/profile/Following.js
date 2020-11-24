@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import SmallUserCard from '../misc/SmallUserCard';
+import axiosWithAuth from '../../functions/axiosWithAuth';
 
-function Following(props){
-    console.log(props)
+
+function Following({toggle, data, id}){
+    const [following, setFollowing] = useState()
+    useEffect(()=>{
+        var array = Promise.all(data.map(user =>{
+            console.log(user)
+            return axiosWithAuth().get(`/friends/${user.friend_id}`).then(data => {
+                return data.data
+            })
+        }))
+        array.then(res => {
+            setFollowing(res)
+        })
+    },[])
     return (
         <div className='modal-narrow'>
-            <button className='modal-exit' onClick={props.toggle}>X</button>
+            <button className='modal-exit' onClick={toggle}>X</button>
             <div className='friend-list'>
-                {props.friendList && props.friendList.length > 0 ? props.friendList.map(user => (
+                {following && following.length > 0 ? following.map(user => (
                     <SmallUserCard user={user}/>
                 )) : <p> you dont follow anyone</p>}
             </div>
