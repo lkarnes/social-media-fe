@@ -1,22 +1,16 @@
-import  {useEffect} from 'react';
-import ReactDOM from 'react-dom'
+import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
+const Portal = ({children}) => {
+  const mount = document.getElementById("portal");
+  const el = document.createElement("div");
+  useEffect(() => {
+    mount.appendChild(el);
+    return () => mount.removeChild(el);
+  });
 
+  return createPortal(children, el)
+};
 
-
-export default function Portal(props){
-    var portalRoot = document.getElementById('portal')
-    var el = document.createElement('div')
-
-    useEffect(()=> {
-        portalRoot.appendChild(el)
-        return function cleanup(){
-            portalRoot.removeChild(el)
-        }
-    })
-    
-    const {children} = props
-    return ReactDOM.createPortal(children, el)
-}
-
+export default Portal;
 

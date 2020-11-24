@@ -25,28 +25,10 @@ function Post({data, id, removeFromFeed}) {
         })
     }, [data.poster_id, id])
     const toggleImageModal = () => {
-        if(history.location.pathname === '/feed'){
-            const feed = document.getElementById('feed-box')
-            if(toggle){
-                setToggle(!toggle)
-                feed.classList.remove('blur')
-            }else{
-                feed.classList.add('blur')
-                setToggle(!toggle)
-            }
-        }else {
-            const profile = document.getElementById('profile')
-            if(toggle){
-                setToggle(!toggle)
-                profile.classList.remove('blur')
-            }else{
-                profile.classList.add('blur')
-                setToggle(!toggle)
-            }
+        setToggle(!toggle)
         }
         
         
-    }
     const handleDelete = () => {
         axiosWithAuth().delete(`/posts/remove/${data.id}`).then(res => {
             removeFromFeed(data.id)
@@ -55,23 +37,26 @@ function Post({data, id, removeFromFeed}) {
     }
 
     return !removed?(
-        <div className='single-post'>
-            <div className='user-tag'>
-                {posterData.image?<Link to={`/profile/${data.poster_id}`} ><img className='user-icon-small' src={posterData.image} alt='icon' /></Link>: <img className='user-icon-small' src={userIcon} alt='icon'/>}
-                <p className='username'>{posterData.username}</p>
-                <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
-                {id === parseInt(data.poster_id)?<img src={deleteButton} className='delete-button' onClick={handleDelete} alt='delete'/>: null}
+        <>
+            <div className='single-post'>
+                <div className='user-tag'>
+                    {posterData.image?<Link to={`/profile/${data.poster_id}`} ><img className='user-icon-small' src={posterData.image} alt='icon' /></Link>: <img className='user-icon-small' src={userIcon} alt='icon'/>}
+                    <p className='username'>{posterData.username}</p>
+                    <p className='date-posted'>{date.toLocaleString().replace(",","").replace(/:.. /," ")}</p>
+                    {id === parseInt(data.poster_id)?<img src={deleteButton} className='delete-button' onClick={handleDelete} alt='delete'/>: null}
+                </div>
+                <div className='post-data'>
+                    <p className='title'>{data.header}</p>
+                    <p className='body'>{data.body}</p>
+                    {data.type === 'image' ? <img className='post-image' src={data.image} alt='' onClick={()=>toggleImageModal()}/> :'' }
+                </div>
+                <PostFooter data={data} />
+                
             </div>
-            <div className='post-data'>
-                <p className='title'>{data.header}</p>
-                <p className='body'>{data.body}</p>
-                 {data.type === 'image' ? <img className='post-image' src={data.image} alt='' onClick={()=>toggleImageModal()}/> :'' }
-            </div>
-            <PostFooter data={data} />
-            <Portal>
+            {/* <Portal>
                 {toggle?<ImageModal {...data} toggle={toggleImageModal} />:null}
-            </Portal>
-            </div>
+            </Portal> */}
+            </>
         ):<div className='single-post'>this post has been removed...</div>
 }
 
