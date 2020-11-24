@@ -10,7 +10,7 @@ function MyProfileHeader(props){
             
                 <img className='user-icon-large profile-picture' src={props.userData.image?props.userData.image: Icon} alt={`${props.userData.first_name}s profile`} />
                 <div className='profile-button-menu'>
-                    {/* <UserStats id={props.userData.id} LikeToggle={props.toggleLikes}/> */}
+                    <UserStats id={props.userData.id} LikeToggle={props.toggleLikes}/>
                     <button className='edit button-2' onClick={props.toggleEdit}>Edit</button>
                 </div>
                 <div className='user-data'>
