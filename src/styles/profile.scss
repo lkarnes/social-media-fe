@@ -25,18 +25,19 @@
 }   
     .user-data {
         margin-left: 20px;
-        height: 80px;
+        height: 60px;
         flex-direction: column;
         display: flex;
         width: 80%;
         align-items: flex-start;
-        justify-content: flex-end;
+        justify-content: center;
         @media(max-width: $mobile){
             margin-left: 20px;
             width: 60%;
             h5 {
                 font-size: 20px;
                 font-weight: 600;
+                padding-bottom: 4px;
             }
             p {
                 font-size: 14px;
@@ -51,50 +52,67 @@
     }
     .profile-button-menu {
         margin-top: 10px;
-        width: 100%;
+        width: 75%;
         display: grid;
         padding: 0 15px 5px 0;
-        grid-template-columns: 120px 120px 120px auto 120px;
+        grid-template-columns: 20px 65% auto 20% 20px;
         @media(max-width: $mobile){
             padding: 0;
-            grid-template-columns: auto 25% 25% 25% 25% auto;
+            grid-template-columns: 20px 50% auto 20% 20px;
         }
-        
-            .following{
-                grid-column-start: 1;
-                grid-column-end: 2;
-                @media(max-width: $mobile){
-                    grid-column-start: 2;
-                    grid-column-end: 3;
-                }
-            }
-
-            .followers {
-                grid-column-start: 2;
-                grid-column-end: 3;
-                @media(max-width: $mobile){
-                    grid-column-start: 3;
-                    grid-column-end: 4;
-                }
-            }
-            .likes {
-                grid-column-start: 3;
-                grid-column-end: 4;
+            .edit {
+                grid-column-start: 4;
+                grid-column-end: 5;
                 @media(max-width: $mobile){
                     grid-column-start: 4;
-                    grid-column-end: 5;
-                } 
-            }
-            .edit {
-                grid-column-start: 5;
-                grid-column-end: 6;
-                @media(max-width: $mobile){
-                    grid-column-start: 5;
-                    grid-column-end: 6; 
+                    grid-column-end: 5; 
                 }
             }
-
+    
         
+    }
+    .user-stats {
+        grid-column-start: 2;
+        grid-column-end: 3;
+        display: flex;
+        justify-content: space-evenly;
+        border-radius: 5px;
+        background: $primary;
+        padding: 3px;
+        @media (max-width: $mobile) {
+            grid-column-start:2;
+            grid-column-end: 3;
+        }
+        .stat{
+            padding: 5px;
+            background: $secondary;
+            border: 1px solid $secondary;
+            border-radius: 5px;
+            width: 25%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            h5, p {
+                color: $secondary-color;
+                font-weight: 600;
+                
+            }
+            &:hover{ 
+                transition: ease-in-out .25s;
+                background: $primary;
+                border: 1px solid $button1;
+               
+            }
+            @media(max-width: $mobile){
+                p {
+                    font-size: 12px;
+                }
+                h5 {
+                    font-size: 20px;
+                }
+            }
+        }
     }
     .likes-box {
         background: $third;
