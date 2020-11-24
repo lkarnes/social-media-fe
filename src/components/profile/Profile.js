@@ -4,13 +4,16 @@ import axiosWithAuth from '../../functions/axiosWithAuth';
 import Post from '../feed/Post';
 import FriendButton from './FriendButton';
 import UserIcon from '../../images/user-icon.png';
+import UserStats from './UserStats';
+
 
 import { addFriend, removeFriend } from '../../redux/actions';
 
 function Profile(props) {
     const [data,setData] = useState({})
     const [posts, setPosts] = useState([])
-    
+    const [likeToggle, setLikeToggle] = useState(false);
+    const toggleLikes = () => setLikeToggle(!likeToggle);
     useEffect(()=>{
         axiosWithAuth().get(`/friends/${props.match.params.id}`).then(res => {
             setData(res.data)
@@ -18,15 +21,23 @@ function Profile(props) {
                 setPosts(res.data.reverse())
             })
         })   
+        console.log(props)
     },[props])
     
    return (
         <div className='profile'>
             <div className='profile-header'>
-                <img className='user-icon-large' src={data.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
-                <h2>{data.first_name} {data.last_name} aka {data.username}</h2>
-                <h5>email: {data.email}</h5>
-                <FriendButton data={data}/>
+                <img className='user-icon-large profile-picture' src={data.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
+                
+                <div className='profile-button-menu'>
+                    <UserStats id={props.id} LikeToggle={toggleLikes}/>
+                </div>
+                <div className='user-data'>
+                    <h5>{data.first_name} {data.last_name} aka {data.username}</h5>
+                    <p>email: {data.email}</p>
+                    <FriendButton data={data}/>
+                </div>
+                
             </div>
             
             <div className='post-box'>

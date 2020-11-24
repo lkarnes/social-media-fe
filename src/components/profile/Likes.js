@@ -5,11 +5,11 @@ import {loadLikes} from '../../redux/actions';
 
 import Post from '../feed/Post';
 
-function Likes({userData, userLikes, loadLikes}){
+function Likes({userData, userLikes, loadLikes, id}){
     const [likes , setLikes] = useState(userLikes)
     const [mounted, setMounted] = useState(false)
     useEffect(()=> {
-        axiosWithAuth().get(`/likes/posts/${userData.id}`).then(res => {
+        axiosWithAuth().get(`/likes/posts/${id}`).then(res => {
             loadLikes(res.data)
             setLikes(res.data)
             setMounted(true)

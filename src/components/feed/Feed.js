@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axiosWithAuth from '../../functions/axiosWithAuth'
 import MakePost from './MakePost'
 import {connect} from 'react-redux'
-import {fillFeed, addPost, addToFeed} from '../../redux/actions'
+import {fillFeed, addPost, addToFeed} from '../../redux/actions';
 
 import Post from './Post'
 
@@ -39,7 +39,7 @@ function Feed(props) {
           <div className='main-feed'>
             <MakePost />
             {props.feedArray.length === 0 ? <div>No Post Found...</div> :props.feedArray.map(post => (
-                <Post key={`${post.id}`} data={{...post}} />
+                <Post key={post.id} data={post} />
             ))}
             {props.feedArray.length > 0 ? <button onClick={handleLoadMore}>Load More</button> : null}
           </div>

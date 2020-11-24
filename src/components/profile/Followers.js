@@ -8,8 +8,9 @@ function Followers(props){
     const [followers, setFollowers] = useState([])
 
     useEffect(()=>{
-        axiosWithAuth().get(`/friends/all/followers/${props.userData.id}`).then(res => {
-            var array = Promise.all(res.data.map(user =>{
+        console.log(props.data)
+        if(props.data.length > 0){
+            var array = Promise.all(props.data.map(user =>{
                 return axiosWithAuth().get(`/friends/${user.user_id}`).then(data => {
                     return data.data
                 })
@@ -17,7 +18,19 @@ function Followers(props){
             array.then(res => {
                 setFollowers(res)
             })
-        })
+        }else{
+            axiosWithAuth().get(`/friends/all/followers/${props.userData.id}`).then(res => {
+                var array = Promise.all(res.data.map(user =>{
+                    return axiosWithAuth().get(`/friends/${user.user_id}`).then(data => {
+                        return data.data
+                    })
+                }))
+                array.then(res => {
+                    setFollowers(res)
+                })
+            })
+        }
+        
     },[])
     return (
 

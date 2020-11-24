@@ -4,6 +4,7 @@ import {connect} from 'react-redux';
 import SmallUserCard from '../misc/SmallUserCard';
 
 function Following(props){
+    console.log(props)
     return (
         <div className='modal-narrow'>
             <button className='modal-exit' onClick={props.toggle}>X</button>
