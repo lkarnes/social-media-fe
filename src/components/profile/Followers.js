@@ -25,6 +25,7 @@ function Followers(props){
 
         <div className='modal-narrow'>
             <button className='modal-exit' onClick={props.toggle}>X</button>
+            <h5 className='modal-heading'>Followers</h5>
             <div>
                 {followers.map(user => (
                     <SmallUserCard user={user}/>

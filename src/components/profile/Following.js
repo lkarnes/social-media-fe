@@ -21,6 +21,7 @@ function Following({toggle, data, id}){
     return (
         <div className='modal-narrow'>
             <button className='modal-exit' onClick={toggle}>X</button>
+            <h5 className='modal-heading'>Following</h5>
             <div className='friend-list'>
                 {following && following.length > 0 ? following.map(user => (
                     <SmallUserCard user={user}/>
