@@ -67,3 +67,10 @@ export const loadLikes = payload => {
         payload: payload
     }
 }
+
+export const clearState =() => {
+    return {
+        type: 'CLEAR_STATE',
+        payload: null
+    }
+}

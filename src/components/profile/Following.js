@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import SmallUserCard from '../misc/SmallUserCard';
 import axiosWithAuth from '../../functions/axiosWithAuth';

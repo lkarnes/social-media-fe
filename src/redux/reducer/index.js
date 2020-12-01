@@ -71,10 +71,13 @@ switch(action.type) {
             likes: [action.payload, ...state.likes]
         }
     case "LOAD_LIKES":
-        console.log(action.payload)
         return {
             ...state,
             likes: [...action.payload]
+        }
+    case "CLEAR_STATE":
+        return {
+            ...initialState
         }
     default:
         return state

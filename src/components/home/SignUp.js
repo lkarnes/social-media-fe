@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import Icon from '../../images/user-icon.png'
+import jwt_decode from 'jwt-decode';
 import {connect} from 'react-redux'
 import {signIn} from '../../redux/actions'
+import axiosWithAuth from '../../functions/axiosWithAuth';
 
 function SignUp(props){
     const [data] = useState({})
@@ -37,13 +39,19 @@ function SignUp(props){
         var form = new FormData(formElement.current)
         e.preventDefault()
         form.delete('confirm-password')
+        //registers user
         axios.post('https://social-1.herokuapp.com/api/register', form).then(res =>{
             localStorage.setItem('token', res.data.token)
             props.signIn(res.data.userData)
-            props.props.history.push('/feed')
+            //force follows the official account
+            axiosWithAuth().post('/friends/add', { user_id: res.data.id[0],friend_id: 10, friendship_status: 'low'}).then(res => {
+                props.props.history.push('/feed')
+            }).catch(err => console.log({err}) );
+            
         }
         ).catch(err => {
-            console.log(err.response.data.detail)
+            console.log({err})
+            alert('there was an error while creating your account please try to log in and then try to register again')
         })
     }
     return (
