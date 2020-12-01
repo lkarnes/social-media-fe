@@ -31,7 +31,7 @@ function FriendButton(props){
         props.removeFriend(props.data.id)
         setFriends(false)
         axiosWithAuth().delete(`/friends/remove/${props.userData.id}/${props.data.id}`).then(res => {
-            console.log(res)
+            
         }).catch(err => {
             console.log({err})
         })

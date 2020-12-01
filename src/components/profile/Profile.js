@@ -21,7 +21,6 @@ function Profile(props) {
                 setPosts(res.data.reverse())
             })
         })   
-        console.log(props)
     },[props])
     
    return (

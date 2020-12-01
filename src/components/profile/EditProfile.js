@@ -14,9 +14,6 @@ function EditProfile(props){
     const handleSave = e => {
         e.preventDefault()
         const formData = new FormData(formElem.current)
-        for (var value of formData.values()) {
-            console.log(value); 
-         }
          formData.append('email', props.userData.email)
          formData.append('password', props.userData.password)
         axios.put(`https://social-1.herokuapp.com/api/edit/${props.userData.id}`, formData).then(res =>{
