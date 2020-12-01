@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import SmallUserCard from '../misc/SmallUserCard';
 import axiosWithAuth from '../../functions/axiosWithAuth';
@@ -9,7 +8,6 @@ function Following({toggle, data, id}){
     const [following, setFollowing] = useState()
     useEffect(()=>{
         var array = Promise.all(data.map(user =>{
-            console.log(user)
             return axiosWithAuth().get(`/friends/${user.friend_id}`).then(data => {
                 return data.data
             })

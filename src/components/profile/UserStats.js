@@ -14,7 +14,6 @@ export default function UserStats(props) {
     useEffect(()=> {
         axiosWithAuth().get(`/friends/all/followers/${props.id}`).then(res => {
             setFollowers(res.data)
-            console.log(res.data)
         })
         axiosWithAuth().get(`/friends/all/${props.id}`).then(res => {
             setFollowing(res.data)

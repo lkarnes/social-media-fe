@@ -8,11 +8,14 @@ import axiosWithAuth from '../../functions/axiosWithAuth'
 function LikeButton(props){
     const [likeToggle, setLikeToggle] = useState()
     useEffect(()=>{
-        if(props.likes.filter(l => l.id === props.data.id).length === 1){
+        if(props.likes){
+            if(props.likes.filter(l => l.id === props.data.id).length === 1){
             setLikeToggle(true)
+            }
         }else{
             setLikeToggle(false)
         }
+        
     },[])
     const handleLike = () => {
         if(likeToggle){

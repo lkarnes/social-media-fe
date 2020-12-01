@@ -5,7 +5,6 @@ import axiosWithAuth from '../../functions/axiosWithAuth'
 import Delete from '../../images/delete.png'
 
 function Comment({data, postState}){
-    console.log(postState)
     const handleDelete = e => {
         axiosWithAuth().delete(`/comments/remove/${data.id}/${data.post_id}`).then(res => {
             var newComments = postState.data.comments.filter(com => com.id !== data.id);

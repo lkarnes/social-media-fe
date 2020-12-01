@@ -10,10 +10,11 @@
         align-items: flex-start;
         color: white;
         background: $foreground;
-        min-height: 100px;
+        min-height: 190px;
         box-shadow: 0px 3px 5px rgb(168, 168, 168);
         @media(max-width: $mobile){
             width: 100%;
+            min-height: 100px;
         }
         input {
             font-size: 30px;
@@ -21,6 +22,12 @@
             @media(max-width: $mobile){
                 font-size: 18px;
             }
+        }
+        .delete-account{ 
+            background: tomato;
+            color: white;
+            margin-left: 50%;
+
         }
 }   
     .user-data {
