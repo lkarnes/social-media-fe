@@ -4,30 +4,35 @@
         position: static;
         width: 60%;
         margin: 0 auto;
-        margin-bottom: 8px;
+        margin-bottom: 15px;
         display: flex;
         flex-wrap: wrap;
         align-items: flex-start;
         color: white;
         background: $foreground;
-        min-height: 190px;
+        min-height: 200px;
         box-shadow: 0px 3px 5px rgb(168, 168, 168);
         @media(max-width: $mobile){
             width: 100%;
-            min-height: 100px;
         }
         input {
             font-size: 30px;
             width: 160px;
             @media(max-width: $mobile){
                 font-size: 18px;
+                width: 120px;
             }
+        }
+        .friend-button {
+            margin: 5px;
         }
         .delete-account{ 
             background: tomato;
             color: white;
             margin-left: 50%;
-
+            @media (max-width:$mobile) {
+                margin-left: 10px;
+            }
         }
 }   
     .user-data {
@@ -40,7 +45,7 @@
         justify-content: center;
         @media(max-width: $mobile){
             margin-left: 20px;
-            width: 60%;
+            width: 100%;
             h5 {
                 font-size: 20px;
                 font-weight: 600;
@@ -53,26 +58,24 @@
     }
     .profile-picture {
         margin: 0 5px;
-        @media(max-width: $mobile){
-
-        }
     }
     .profile-button-menu {
         margin-top: 10px;
         width: 75%;
         display: grid;
         padding: 0 15px 5px 0;
-        grid-template-columns: 20px 65% auto 20% 20px;
+        grid-template-columns: 20px 55% auto 20% 20px;
         @media(max-width: $mobile){
             padding: 0;
-            grid-template-columns: 20px 50% auto 20% 20px;
+            grid-template-columns: 0px 70% auto 25% 0px;
+            grid-template-rows: 18px 5px 50px 5px;
         }
             .edit {
                 grid-column-start: 4;
                 grid-column-end: 5;
                 @media(max-width: $mobile){
-                    grid-column-start: 4;
-                    grid-column-end: 5; 
+                    grid-column-start: 2;
+                    grid-column-end: 3; 
                 }
             }
     
@@ -87,6 +90,7 @@
         background: $primary;
         padding: 3px;
         @media (max-width: $mobile) {
+            grid-row-start:3;
             grid-column-start:2;
             grid-column-end: 3;
         }

@@ -41,7 +41,7 @@ function FriendButton(props){
         return <div>Loading...</div>
     }else if(friends){
         
-        return <button className='button-3' onClick={handleRemoveFriend}>UnFollow</button>
+        return <button className='button-3 friend-button' onClick={handleRemoveFriend}>UnFollow</button>
     }else{
         console.log(friends)
         return <button className='button-1' onClick={handleAddFriend}>Follow</button>
