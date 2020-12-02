@@ -6,7 +6,6 @@ function MakeComment(props){
     const [comment, setComment] = useState()
 
     const handleChange = e => {
-        console.log(e.target.value)
         setComment(e.target.value)
     }
     const handleSubmit = e => {
