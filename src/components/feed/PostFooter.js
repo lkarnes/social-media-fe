@@ -16,7 +16,7 @@ function PostFooter(props){
         axiosWithAuth().get(`/comments/${props.data.id}`).then(res => {
             setData({...data, comments: res.data})
         })
-    },[data.likes, data.id])
+    },[])
     
     return (
         <>

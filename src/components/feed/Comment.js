@@ -4,7 +4,7 @@ import axiosWithAuth from '../../functions/axiosWithAuth'
 
 import Delete from '../../images/delete.png'
 
-function Comment({data, postState}){
+function Comment({data, postState, userData}){
     const handleDelete = e => {
         axiosWithAuth().delete(`/comments/remove/${data.id}/${data.post_id}`).then(res => {
             var newComments = postState.data.comments.filter(com => com.id !== data.id);
@@ -16,11 +16,15 @@ function Comment({data, postState}){
             <div className='comment-tag'>
                 <img className='user-icon-xsmall' src={data.image} alt='user icon' />
                 <p className='username'>{data.first_name} {data.last_name} aka {data.username}</p>
-                <img className='delete-button' src={Delete} onClick={handleDelete} alt='delete' />
+                {userData.username === data.username ? <img className='delete-button' src={Delete} onClick={handleDelete} alt='delete' />: null}
             </div>
             <p className='body'>{data.body}</p>
         </div>
     )
 }
 
-export default connect()(Comment)
+const mapStateToProps = state => ({
+    userData : state.userData
+})
+
+export default connect(mapStateToProps)(Comment)
