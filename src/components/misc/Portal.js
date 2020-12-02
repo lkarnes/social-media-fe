@@ -5,8 +5,11 @@ const Portal = ({children}) => {
   const mount = document.getElementById("portal");
   const el = document.createElement("div");
   useEffect(() => {
-    mount.appendChild(el);
-    return () => mount.removeChild(el);
+    if(mount){
+      mount.appendChild(el);
+      return () => mount.removeChild(el);
+    }
+    
   });
 
   return createPortal(children, el)

@@ -5,6 +5,7 @@ import Post from '../feed/Post';
 import FriendButton from './FriendButton';
 import UserIcon from '../../images/user-icon.png';
 import UserStats from './UserStats';
+import Header from '../header/Header'
 
 
 import { addFriend, removeFriend } from '../../redux/actions';
@@ -24,6 +25,8 @@ function Profile(props) {
     },[props])
     
    return (
+       <>
+       <Header/>
         <div className='profile'>
             <div className='profile-header'>
                 <img className='user-icon-large profile-picture' src={data.image === null ? UserIcon : data.image} alt={`${data.first_name}s profile`} />
@@ -47,6 +50,7 @@ function Profile(props) {
             </div>
             
         </div>
+    </>
     )
 }
 
