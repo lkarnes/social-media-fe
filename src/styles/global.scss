@@ -60,6 +60,15 @@ button {
     background: $button2;
   }
 }
+
+.paper {
+  background: whitesmoke;
+  padding: 5px;
+}
+.shadow {
+  box-shadow: 5px 5px 5px rgb(192, 192, 192);
+}
+
 .user-icon-small {
   box-sizing: border-box;
   min-width: 40px;
@@ -148,11 +157,18 @@ button {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  @media (max-width: $mobile){
+    top: 60%;
+    left: 50%;
+    width: 350px;
+    max-height: 700px;
+    margin-top: -350px;
+    margin-left: -175px;
+  }
 }
 
 .friend-list {
-  width: 80%;
-  margin: 10px;
+  width: 100%;
   a {
     text-decoration: none;
   }
@@ -226,6 +242,7 @@ button {
 }
 
 .user-card {
+  box-sizing: border-box;
   text-decoration: none;
   width: 100%;
   display: flex;

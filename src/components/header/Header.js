@@ -2,10 +2,12 @@ import React, {useEffect} from 'react';
 import axiosWithAuth from '../../functions/axiosWithAuth';
 import SignedInHeader from './SignedInHeader';
 import jwt_decode from 'jwt-decode';
+import {useHistory} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {signIn, getFriends, loadLikes} from '../../redux/actions';
 
-function Header({friend_list, getFriends, signIn, userData, loadLikes}) {
+function Header({ getFriends, signIn, userData, loadLikes}) {
+    const history = useHistory();
     useEffect(()=>{
         if(localStorage.getItem('token') && userData.id === null){
             var token = localStorage.getItem('token')
@@ -31,8 +33,9 @@ function Header({friend_list, getFriends, signIn, userData, loadLikes}) {
             }).catch(err => console.log({err}))
         }
         
-    },[getFriends, signIn, userData.id])
-    return userData.id === null ? null : (<SignedInHeader/>)
+    },[getFriends, signIn, userData.id, loadLikes])
+
+    return history.location.pathname !== '/'? (<SignedInHeader/>): null;
 }
 
 const mapStateToProps= state =>({

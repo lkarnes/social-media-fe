@@ -8,7 +8,7 @@ import MyProfileHeader from './MyProfileHeader';
 import MakePost from '../feed/MakePost';
 import Likes from './Likes';
 import EditProfile from './EditProfile';
-
+import Header from '../header/Header';
 
 import { fillFeed } from '../../redux/actions';
 
@@ -30,6 +30,7 @@ function Profile(props) {
     if (props.userData.id){
        return (
             <>
+                <Header/>
                 <div id='profile'>
                 {edit?<EditProfile {...props} toggleEdit={toggleEdit}/>: <MyProfileHeader {...props}toggleLikes={toggleLikes} toggleEdit={toggleEdit}/>}
                 <div className='post-box'>

@@ -1,6 +1,9 @@
 import React, {useEffect, useState} from 'react'
 import axiosWithAuth from '../../functions/axiosWithAuth'
+
 import MakePost from './MakePost'
+import Header from '../header/Header'
+
 import {connect} from 'react-redux'
 import {fillFeed, addPost, addToFeed} from '../../redux/actions';
 
@@ -31,6 +34,8 @@ function Feed(props) {
         })
       }
     return (
+      <>
+        <Header/>
         <div id='feed-box' className='feed'>
           <div className='left-panel'>
 
@@ -49,7 +54,7 @@ function Feed(props) {
           </div>
 
         </div>
-        
+      </>
     )
 }
 

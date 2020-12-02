@@ -1,8 +1,26 @@
 .sign-up{
-    width: 80%;
-    .header{
+    width: 600px;
+    margin: 0 auto;
+    height: 500px;
+    @media (max-width: $mobile) {
+        width: 90%;
+    }
+    .heading{
+        width:100%; 
         border-bottom:1px solid grey;
-        padding-bottom: 5px;
+        padding-bottom: 10px;
+    }
+    form {
+        margin-top: 20px;
+    }
+    .input{
+        width: 100%;
+        margin: 5px auto;
+        text-decoration: none;
+        border: 1px solid $secondary;
+    }
+    .submit{
+        margin-left: 20%;
     }
     .confirm-password{
         width: 100%;
@@ -21,16 +39,13 @@
         border-radius: 50%;
     }
     .input-box{
-        width: 100%;
+        width: 60%;
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
-        p{
-            padding: 3px 0 5px 0;
-        }
-        .input{
-            border: none;
-            width: 70%;
+        @media (max-width:$mobile){
+            width: 80%;
         }
         .confirm{
             width: 10px;
@@ -39,8 +54,5 @@
             background: $button2
         }
         
-    }
-    .submit {
-        margin: 5px;
     }
 }

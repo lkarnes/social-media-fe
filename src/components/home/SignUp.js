@@ -55,8 +55,8 @@ function SignUp(props){
         })
     }
     return (
-        <div className='sign-up'>
-            <h5 className=''>Sign Up</h5>
+        <div className='sign-up paper'>
+            <h5 className='heading'>Sign Up</h5>
             <form ref={formElement} onSubmit={handleSubmit}>
                 <div className='image-input'>
                     <p>Profile Picture</p>

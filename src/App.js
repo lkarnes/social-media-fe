@@ -10,7 +10,6 @@ function App() {
   
   return (
     <div id='App'>
-      <Header/>
       <Route exact path='/' component={Home}/>
       <Route path='/feed' component={Feed}/>
       <Route exact path='/profile/:id' component={Profile}/>

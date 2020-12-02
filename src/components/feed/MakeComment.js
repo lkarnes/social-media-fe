@@ -3,34 +3,36 @@ import {connect} from 'react-redux';
 import axiosWithAuth from '../../functions/axiosWithAuth'
 
 function MakeComment(props){
-    const [comment, setComment] = useState({
-        user_id: props.user_id,
-        post_id: props.data.id
-    })
+    const [comment, setComment] = useState()
 
     const handleChange = e => {
-        comment[e.target.name] = e.target.value
+        setComment(e.target.value)
     }
     const handleSubmit = e => {
         e.preventDefault()
-        axiosWithAuth().post('/comments/add', comment).then(res => {
-            comment.first_name = props.userData.first_name;
-            comment.last_name = props.userData.last_name;
-            comment.username = props.userData.username;
-            comment.image = props.userData.image;
-            comment.id = res.data;
-            console.log(res);
-            props.postState.setData({...props.postState.data, comments: [...props.postState.data.comments, comment]})
-        })
-        setComment({
+        let newComment = {
+            body:comment,
             user_id: props.user_id,
-            post_id: props.data.id, 
-            body: ''
+            post_id: props.data.id
+        }
+        axiosWithAuth().post('/comments/add', newComment).then(res => {
+            newComment = {
+                body:comment,
+                user_id: props.user_id,
+                post_id: props.data.id,
+                first_name : props.userData.first_name,
+                last_name : props.userData.last_name,
+                username : props.userData.username,
+                image : props.userData.image,
+                id : res.data,
+            }
+            props.postState.setData({...props.postState.data, comments: [...props.postState.data.comments, newComment]})
         })
+        setComment('')
     }
     return (
         <form className='comment-form'>
-            <textarea type='text' name='body' value={comment.body} onChange={handleChange} placeholder='write a comment' />
+            <textarea type='text' name='body' value={comment} onChange={handleChange} placeholder='write a comment' />
             <button type='submit ' onClick={handleSubmit}>Send</button>
         </form>
     )
