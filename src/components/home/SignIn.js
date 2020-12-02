@@ -20,8 +20,8 @@ function SignIn(props){
         })
     }
     return (
-        <div className='sign-in'>
-            <h5 className=''>Sign In</h5>
+        <div className='sign-in paper'>
+            <h5 className='heading'>Sign In</h5>
             <form onSubmit={handleSubmit}>
                 <div className='input-box'>
                     <p>Username</p>
