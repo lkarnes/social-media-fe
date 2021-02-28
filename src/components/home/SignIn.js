@@ -17,6 +17,8 @@ function SignIn(props){
             localStorage.setItem('token', res.data.token)
             props.signIn(res.data.userData)
             props.props.history.push('/feed')
+        }).catch(error => {
+            alert("we were not able to find an account matching these credentials please try again.")
         })
     }
     return (
